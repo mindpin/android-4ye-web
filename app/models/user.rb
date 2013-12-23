@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
                    :uniqueness => {:case_sensitive => false}
 
   def self.find_for_database_authentication(conditions)
-    p "~~~~~~~~~~~self.find_for_database_authentication(conditions)"
     login = conditions.delete(:login)
     self.where(:login => login).first || self.where(:email => login).first
   end
