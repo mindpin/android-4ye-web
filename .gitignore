@@ -31,3 +31,4 @@ db/schema.rb
 public/assets/*
 *~
 *\#*
+config/mongoid.yml
