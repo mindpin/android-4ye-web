@@ -22,3 +22,7 @@ gem "carrierwave", "0.8.0"
 gem "mini_magick", "3.5.0", :require => false
 # mongoid
 gem "mongoid", "~> 3.0.0"
+
+gem 'knowledge-space-net-lib',
+    :git => 'git://github.com/mindpin/knowledge-space-net-lib.git',
+    :tag => '0.2.2'
