@@ -24,5 +24,7 @@ gem "mini_magick", "3.5.0", :require => false
 gem "mongoid", "~> 3.0.0"
 
 group :test do
+  gem 'database_cleaner', '~> 1.2.0'
   gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'factory_girl_rails', '~> 4.2.1'
 end
