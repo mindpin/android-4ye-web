@@ -22,3 +22,7 @@ gem "carrierwave", "0.8.0"
 gem "mini_magick", "3.5.0", :require => false
 # mongoid
 gem "mongoid", "~> 3.0.0"
+
+group :test do
+  gem 'rspec-rails', '~> 3.0.0.beta'
+end
