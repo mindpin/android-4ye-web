@@ -28,3 +28,7 @@ group :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'factory_girl_rails', '~> 4.2.1'
 end
+
+gem 'knowledge-space-net-lib',
+    :git => 'git://github.com/mindpin/knowledge-space-net-lib.git',
+    :tag => '0.2.3'
