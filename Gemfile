@@ -15,7 +15,7 @@ gem 'unicorn', '4.6.2'
 # 登录验证
 gem 'devise', '2.2.4'
 # 页面渲染
-gem 'haml', '4.0.0' # HAML模板语言
+gem 'haml', '4.0.3' # HAML模板语言
 # 文件上传（fushang318增加） 
 gem "carrierwave", "0.8.0"
 # carrierwave 用到的图片切割
