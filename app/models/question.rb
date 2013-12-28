@@ -10,9 +10,8 @@ class Question
   field :knowledge_node_id, :type => String
   field :kind,              :type => String
   field :content,           :type => String
-  field :choices_list,      :type => String
+  field :choices,           :type => Array
   field :answer,            :type => String
-  
 
   def is_single_choice?
     self.kind == SINGLE_CHOICE
@@ -40,5 +39,21 @@ class Question
     return "判断题" if is_true_false
     return "填空题" if is_fill
     "单选题"
+  end
+
+  def self.from_json(json)
+    hash = JSON.parse(json)
+    self.new(hash)
+  end
+
+  module KnowledgeNodeRandomQuesiton
+    def get_random_question(except_ids)
+      questions = Question.where(:_id.nin => except_ids)
+      count = questions.count
+      return if count == 0
+
+      offset = (0..(count - 1)).sort_by{rand}.first
+      questions.skip(offset).first
+    end
   end
 end
