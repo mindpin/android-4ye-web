@@ -2,8 +2,7 @@ class ExperienceStatus
   LEVEL_UP_EXP_NUM = [10,15,23]
   attr_accessor :level, :level_up_exp_num, :exp_num
 
-  def initialize(user)
-    elog = user.experience_logs.last
+  def initialize(elog)
     if elog.blank?
       self.level = 1
       self.level_up_exp_num = LEVEL_UP_EXP_NUM[0]

@@ -1,4 +1,7 @@
 class ExperienceLog
+  CHECK_POINT  = 'Checkpoint'
+  NODE         = 'node'
+
   include Mongoid::Document
   include Mongoid::Timestamps
 
@@ -8,6 +11,7 @@ class ExperienceLog
   field :model_type,  :type => String
   field :model_id,    :type => String
   field :data_json,   :type => Moped::BSON::Binary
+  field :course,      :type => String
 
   def user
     User.find(user_id)
@@ -18,20 +22,31 @@ class ExperienceLog
       ExperienceLog.where(:user_id => self.id)
     end
 
-    def add_exp(delta_num,model,data_json)
+    def add_exp(course,delta_num,model,data_json)
+      return nil if model.blank?
       after_exp_elog = ExperienceLog.last
       before_exp = after_exp_elog.blank? ? 0:after_exp_elog.after_exp
 
       self.experience_logs.create(:before_exp => before_exp,
                                   :after_exp  => before_exp + delta_num,
-                                  :model_type => model[:type],
-                                  :model_id   => model[:id],
-                                  :data_json  => data_json
+                                  :model_type => model.class.name,
+                                  :model_id   => _get_model_id(model),
+                                  :data_json  => data_json,
+                                  :course     => course
                                  )
     end
 
-    def experience_status
-      ExperienceStatus.new self
+    def experience_status(course)
+      elog = self.experience_logs.where(:course => course).last
+      ExperienceStatus.new elog
+    end
+
+
+    private
+
+    def _get_model_id(model)
+      model_id = model.class.name.match(/#{CHECK_POINT}/).blank? ? model.node_id : model.checkpoint_id
+      return model_id
     end
   end
 end
