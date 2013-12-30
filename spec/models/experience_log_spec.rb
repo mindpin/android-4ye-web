@@ -57,6 +57,14 @@ describe ExperienceLog do
         status.exp_num.should == 8
       }
 
+      it {
+        user.add_exp(8,@model,@data_json)
+        user.add_exp(14,@model,@data_json)
+        status = user.experience_status
+        status.level.should == 2
+        status.level_up_exp_num.should == ExperienceStatus::LEVEL_UP_EXP_NUM[1]
+        status.exp_num.should == 12
+      }
     end
 
   end
