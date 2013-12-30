@@ -1,6 +1,6 @@
 class ExperienceLog
   CHECK_POINT  = 'Checkpoint'
-  NODE         = 'node'
+  NODE         = 'Node'
 
   include Mongoid::Document
   include Mongoid::Timestamps
