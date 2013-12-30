@@ -46,4 +46,6 @@ class User < ActiveRecord::Base
   def normal_avatar_url
     avatar.versions[:normal].url
   end
+
+  include ExperienceLog::UserMethods
 end

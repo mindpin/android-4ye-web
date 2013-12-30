@@ -11,6 +11,12 @@ group :assets do
   gem 'turbo-sprockets-rails3', '0.3.2' # 加速预编译
 end
 
+group :test do
+  gem 'database_cleaner', '~> 1.2.0'
+  gem 'rspec-rails', '~> 3.0.0.beta'
+  gem 'factory_girl_rails', '~> 4.2.1'
+end
+
 gem 'unicorn', '4.6.2'
 # 登录验证
 gem 'devise', '2.2.4'
