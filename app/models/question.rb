@@ -34,21 +34,25 @@ class Question
   end
 
   def get_kind_str
-    return "单选题" if is_single_choice
-    return "多选题" if is_multiple_choice
-    return "判断题" if is_true_false
-    return "填空题" if is_fill
-    "单选题"
+    case self.kind
+    when MULTIPLE_CHOICE then "多选题"
+    when TRUE_FALSE then "判断题"
+    when FILL then "填空题"
+    else "单选题"
+    end
   end
 
   def self.from_json(json)
-    hash = JSON.parse(json)
-    self.new(hash)
+    self.new(JSON.parse(json))
   end
 
-  module KnowledgeNodeRandomQuesiton
+  module KnowledgeNodeRandomQuestion
+    def all_questions
+      Question.where(:knowledge_node_id => self.node_id)
+    end
+
     def get_random_question(except_ids)
-      questions = Question.where(:_id.nin => except_ids)
+      questions = all_questions.where(:_id.nin => except_ids)
       count = questions.count
       return if count == 0
 
