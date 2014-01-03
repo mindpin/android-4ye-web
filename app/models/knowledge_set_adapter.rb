@@ -9,6 +9,6 @@ class KnowledgeSetAdapter
   end
 
   def is_unlocked?(user)
-    KnowledgeLearned.set_is_unlocked?(@set, user)
+    KnowledgeLearnedSetProxy.is_unlocked?(@set, user)
   end
 end
