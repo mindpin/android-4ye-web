@@ -46,9 +46,22 @@ class Question
     self.new(JSON.parse(json))
   end
 
+  def self.from_yaml(yaml)
+    self.new(YAML.load(yaml))
+  end
+
+  def encode_with coder
+    coder['knowledge_node_id'] = knowledge_node_id
+    coder['kind'] = kind
+    coder['content'] = content
+    coder['choices'] = choices
+    coder['answer'] = answer
+    coder['difficulty'] = difficulty
+  end
+
   module KnowledgeNodeRandomQuestion
     def all_questions
-      Question.where(:knowledge_node_id => self.node_id)
+      Question.where(:knowledge_node_id => self.id)
     end
 
     def get_random_question(except_ids)

@@ -5,7 +5,7 @@ describe Question do
     class DummyKnowledgeNode
       include Question::KnowledgeNodeRandomQuestion
 
-      def node_id
+      def id
         "node-4"
       end
     end
@@ -16,7 +16,7 @@ describe Question do
     4.times do |i|
       let(:"q#{i + 1}") do
         FactoryGirl.create :question,
-                           :knowledge_node_id => node.node_id,
+                           :knowledge_node_id => node.id,
                            :content => "some content",
                            :kind => Question::SINGLE_CHOICE,
                            :choices => choices,
