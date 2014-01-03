@@ -61,7 +61,7 @@ class Question
 
   module KnowledgeNodeRandomQuestion
     def all_questions
-      Question.where(:knowledge_node_id => self.node_id)
+      Question.where(:knowledge_node_id => self.id)
     end
 
     def get_random_question(except_ids)
