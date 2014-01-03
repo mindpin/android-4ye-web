@@ -6,7 +6,7 @@ describe ExperienceLog do
 
   describe ExperienceLog::UserMethods do
     before(:all){
-      net = KnowledgeNet.get_by_name("javascript")
+      net = KnowledgeSpaceNetLib::KnowledgeNet.get_by_name("javascript")
       @checkpoint = net.find_checkpoint_by_id("checkpoint-1")
       @node = net.find_node_by_id("node-31")
     }
@@ -32,9 +32,8 @@ describe ExperienceLog do
         user.add_exp(@course,@delta_num,@checkpoint,@data_json)
         user.experience_logs.first.before_exp.should  == 0
         user.experience_logs.first.after_exp.should   == 8
-
         user.experience_logs.first.model_type.should == @checkpoint.class.name
-        user.experience_logs.first.model_id.should  == @checkpoint.checkpoint_id
+        user.experience_logs.first.model_id.should  == @checkpoint.id
 
         user.experience_logs.first.course.should  == @course
 

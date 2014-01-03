@@ -30,7 +30,7 @@ class ExperienceLog
       self.experience_logs.create(:before_exp => before_exp,
                                   :after_exp  => before_exp + delta_num,
                                   :model_type => model.class.name,
-                                  :model_id   => _get_model_id(model),
+                                  :model_id   => model.id,
                                   :data_json  => data_json,
                                   :course     => course
                                  )
@@ -41,12 +41,5 @@ class ExperienceLog
       ExperienceStatus.new elog
     end
 
-
-    private
-
-    def _get_model_id(model)
-      model_id = model.class.name.match(/#{CHECK_POINT}/).blank? ? model.node_id : model.checkpoint_id
-      return model_id
-    end
   end
 end
