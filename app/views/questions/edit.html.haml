@@ -1,0 +1,10 @@
+.page-new-question
+  .header
+    %h1 编辑测试题
+    .ops
+      = link_to "返回", questions_path
+  .question-form
+    = form_tag question_path(@question), :method => :put do
+      = label_tag "yaml", "内容"
+      = text_area_tag "yaml", @yaml
+      = submit_tag "提交"
