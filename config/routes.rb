@@ -15,4 +15,6 @@ Android4yeWeb::Application.routes.draw do
       get :exp_info
     end
   end
+
+  resources :questions
 end
