@@ -14,7 +14,13 @@ class KnowledgeNodeAdapter
 
   def do_learn(user)
     return if !self.is_unlocked?(user)
-    return if self.is_learned?(user)
+
+    if self.is_learned?(user)
+      user.add_exp(@node.net.name, 5, @node, "")
+      return 
+    end
+
+    user.add_exp(@node.net.name, 10, @node, "")
     KnowledgeLearned.node_do_learn(@node, user)
   end
 end
