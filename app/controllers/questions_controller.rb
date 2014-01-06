@@ -59,14 +59,4 @@ class QuestionsController < ApplicationController
     @question.destroy if @question
     redirect_to :action => :index
   end
-
-  def random
-    result = Question.random_question_for_node_id(params[:net_id], params[:node_id])
-    result = result ? result.as_json : result
-    render :json => result
-  end
-
-  def randoms
-    render :json => Question.random_questions_for_node_id(params[:net_id], params[:node_id], 13).map {|question| question.as_json}
-  end
 end

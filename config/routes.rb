@@ -15,6 +15,8 @@ Android4yeWeb::Application.routes.draw do
       get :exp_info
     end
   end
+  get "/knowledge_nets/:net_id/knowledge_nodes/:id/get_random_question" => "knowledge_nets#random_question"
+  get "/knowledge_nets/:net_id/knowledge_nodes/:id/get_random_questions" => "knowledge_nets#random_questions"
 
   resources :questions do
     collection do
@@ -22,8 +24,6 @@ Android4yeWeb::Application.routes.draw do
       get :net
       get :set
       get :node
-      get :random
-      get :randoms
     end
   end
 end

@@ -89,13 +89,13 @@ class Question
     Question.where(:knowledge_net_id => net_id, :knowledge_node_id => node_id)
   end
 
-  def self.random_question_for_node_id(net_id, node_id)
-    result = self.random_questions_for_node_id(net_id, node_id, 1)
+  def self.random_question_for_node_id(net_id, node_id, except_ids=[])
+    result = self.random_questions_for_node_id(net_id, node_id, 1, except_ids)
     result ? result.first : result
   end
 
-  def self.random_questions_for_node_id(net_id, node_id, number=1)
-    questions = all_questions_for_node_id(net_id, node_id)
+  def self.random_questions_for_node_id(net_id, node_id, number=1, except_ids=[])
+    questions = all_questions_for_node_id(net_id, node_id).where(:_id.nin => except_ids)
     count = questions.count
     return if count == 0
 

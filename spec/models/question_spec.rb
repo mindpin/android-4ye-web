@@ -18,12 +18,13 @@ describe Question do
 
   describe "::random_question_for_node_id(node_id)" do
     let(:randq) {Question.random_question_for_node_id(net_id, node_id)}
+    let(:randq1) {Question.random_question_for_node_id(net_id, node_id, [q1._id])}
     specify {[q1, q2, q3, q4].should include randq}
+    specify {randq1.should_not eq q1}
   end
 
   describe "::random_questions_for_node_id(node_id, num)" do
     let(:randqs) {Question.random_questions_for_node_id(net_id, node_id, 4)}
-    specify {[q1, q2, q3, q4].should_not eq randqs}
     specify {[q1, q2, q3, q4].should eq randqs.sort_by{|q| q.created_at}}
     specify {[q1, q2, q3, q4].should include(*randqs)}
   end
