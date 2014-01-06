@@ -1,0 +1,12 @@
+.page-question-node
+  .header
+    %h1 #{@node.name} - 测试题管理
+    .ops
+      = link_to "新建", new_question_path(:node_id => @node.id, :net_id => @net.id)
+  .question-list
+    - @questions.each do |question|
+      .question
+        .content= question.content
+        .ops
+          = link_to "编辑", edit_question_path(question)
+          = link_to "删除", question_path(question), :method => :delete

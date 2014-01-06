@@ -9,13 +9,9 @@ describe KnowledgeLearned do
     @net.find_checkpoint_adapter_by_id("checkpoint-#{id}")
   end
 
-  def net(id)
-    KnowledgeNetAdapter.find(id)
-  end
 
   before{
-    @course = "test1"
-    @net = net(@course)
+    @net = KnowledgeNetAdapter.test1_instance
     @user = FactoryGirl.create :user
   }
 

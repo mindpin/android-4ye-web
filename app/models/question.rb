@@ -8,9 +8,11 @@ class Question
   FILL            = "fill"
 
   field :knowledge_node_id, :type => String
+  field :knowledge_net_id,  :type => String
   field :kind,              :type => String
   field :content,           :type => String
   field :choices,           :type => Array
+  field :difficulty,        :type => String
   field :answer,            :type => String
 
   def is_single_choice?
@@ -42,6 +44,18 @@ class Question
     end
   end
 
+  def net
+    KnowledgeSpaceNetLib::KnowledgeNet.find(self.knowledge_net_id)
+  end
+
+  def set
+    self.node.set
+  end
+
+  def node
+    self.net.find_node_by_id(self.knowledge_node_id)
+  end
+
   def self.from_json(json)
     self.new(JSON.parse(json))
   end
@@ -51,7 +65,6 @@ class Question
   end
 
   def encode_with coder
-    coder['knowledge_node_id'] = knowledge_node_id
     coder['kind'] = kind
     coder['content'] = content
     coder['choices'] = choices

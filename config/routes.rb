@@ -16,5 +16,12 @@ Android4yeWeb::Application.routes.draw do
     end
   end
 
-  resources :questions
+  resources :questions do
+    collection do
+      get :list
+      get :net
+      get :set
+      get :node
+    end
+  end
 end
