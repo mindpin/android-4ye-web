@@ -14,6 +14,9 @@ Android4yeWeb::Application.routes.draw do
     member do
       get :exp_info
     end
+    collection do
+      get :list
+    end
   end
 
   resources :questions do

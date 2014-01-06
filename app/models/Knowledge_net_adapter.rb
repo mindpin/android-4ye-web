@@ -14,6 +14,13 @@ class KnowledgeNetAdapter
     self.new(net)
   end
 
+  def self.list_hash
+    nets = KnowledgeSpaceNetLib::KnowledgeNet.all
+    nets.map do |net|
+      {:id => net.id, :name => net.name}
+    end
+  end
+
   def find_node_adapter_by_id(node_id)
     node = @net.find_node_by_id(node_id)
     KnowledgeNodeAdapter.new(node)

@@ -7,4 +7,8 @@ class KnowledgeNetsController < ApplicationController
                       :exp_num          => status.exp_num
                     }
   end
+
+  def list
+    render :json => KnowledgeNetAdapter.list_hash
+  end
 end

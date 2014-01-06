@@ -38,4 +38,17 @@ describe KnowledgeNetsController do
       @json['exp_num'].should           == 12
     }
   end
+
+  context '#knowledge_nets list' do
+    before {
+      get :list
+      @json = JSON::parse(response.body)
+    }
+
+    it {
+      net = @json.first
+      net["id"].should == "javascript"
+      net["name"].should == "javascript"
+    }
+  end
 end
