@@ -21,23 +21,19 @@ describe KnowledgeLearned do
 
   it{
     # 第一次学习
-    node(31).do_learn(@user)
-    status = @user.experience_status(@course)
-    status.total_exp_num.should == 10
+    exp_num = node(31).do_learn(@user)
+    exp_num.should == 10
     # 第二次学习
-    node(31).do_learn(@user)
-    status = @user.experience_status(@course)
-    status.total_exp_num.should == 15
+    exp_num = node(31).do_learn(@user)
+    exp_num.should == 5
   }
 
   it{
     # 第一次学习
-    checkpoint(1).do_learn(@user)
-    status = @user.experience_status(@course)
-    status.total_exp_num.should == 10
+    exp_num = checkpoint(1).do_learn(@user)
+    exp_num.should == 10
     # 第二次学习
-    checkpoint(1).do_learn(@user)
-    status = @user.experience_status(@course)
-    status.total_exp_num.should == 15
+    exp_num = checkpoint(1).do_learn(@user)
+    exp_num.should == 5
   }
 end
