@@ -15,6 +15,7 @@ group :test do
   gem 'database_cleaner', '~> 1.2.0'
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'factory_girl_rails', '~> 4.2.1'
+  gem 'timecop', '0.6.1' # 用于在测试中调整时间
 end
 
 gem 'unicorn', '4.6.2'

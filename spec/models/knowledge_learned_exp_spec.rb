@@ -43,25 +43,26 @@ describe KnowledgeLearned do
     describe "每天获取的经验值" do
       before {
         Timecop.travel(Time.now - 1.day) do
-          exp_num = node(9).do_learn(@user)
+          node(31).do_learn(@user)
         end
 
         Timecop.travel(Time.now - 2.day) do
-          node(16).do_learn(@user)
-          node(16).do_learn(@user)
-          node(16).do_learn(@user)
+          node(31).do_learn(@user)
+          node(31).do_learn(@user)
+          node(31).do_learn(@user)
         end
       }
 
       it "1天前的经验值" do
         @day = Time.now.to_date - 1.day
-        KnowledgeLearned.get_exp_by_day(@user, @day).should == 10
+        KnowledgeLearned.get_exp_by_day(@user, @course, @day).should == 10
       end
 
       it "2天前的经验值" do
         @day = Time.now.to_date - 2.day
-        KnowledgeLearned.get_exp_by_day(@user, @day).should == 20
+        KnowledgeLearned.get_exp_by_day(@user, @course, @day).should == 15
       end
+
     end
 
   end
