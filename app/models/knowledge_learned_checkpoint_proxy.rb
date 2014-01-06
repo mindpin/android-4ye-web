@@ -11,11 +11,12 @@ class KnowledgeLearnedCheckpointProxy
   def self.do_learn(checkpoint, user)
     if KnowledgeLearned.is_learned?(checkpoint, user)
       user.add_exp(checkpoint.net.id, 5, checkpoint, "")
-      return
+      return 5
     end
 
     user.add_exp(checkpoint.net.id, 10, checkpoint, "")
     self._do_learn_without_validate_and_exp(checkpoint, user)
+    return 10
   end
 
   def self._do_learn_without_validate_and_exp(checkpoint, user)

@@ -4,6 +4,11 @@ class KnowledgeNetAdapter
     @net = net
   end
 
+  def self.test1_instance
+    net = KnowledgeSpaceNetLib::KnowledgeNet.test1_instance
+    self.new(net)
+  end
+
   def self.find(name)
     net = KnowledgeSpaceNetLib::KnowledgeNet.find(name)
     self.new(net)

@@ -14,15 +14,16 @@ class KnowledgeLearnedNodeProxy
   end
 
   def self.do_learn(node, user)
-    return if !KnowledgeLearnedNodeProxy.is_unlocked?(node, user)
+    return 0 if !KnowledgeLearnedNodeProxy.is_unlocked?(node, user)
 
     if KnowledgeLearned.is_learned?(node, user)
       user.add_exp(node.net.id, 5, node, "")
-      return 
+      return 5
     end
 
     user.add_exp(node.net.id, 10, node, "")
     self._do_learn_without_validate_and_exp(node, user)
+    return 10
   end
 
   def self._do_learn_without_validate_and_exp(node, user)
