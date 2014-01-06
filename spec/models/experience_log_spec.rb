@@ -6,7 +6,7 @@ describe ExperienceLog do
 
   describe ExperienceLog::UserMethods do
     before(:all){
-      net = KnowledgeSpaceNetLib::KnowledgeNet.get_by_name("javascript")
+      net = KnowledgeSpaceNetLib::KnowledgeNet.find("javascript")
       @checkpoint = net.find_checkpoint_by_id("checkpoint-1")
       @node = net.find_node_by_id("node-31")
     }

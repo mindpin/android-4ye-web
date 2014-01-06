@@ -4,8 +4,8 @@ class KnowledgeNetAdapter
     @net = net
   end
 
-  def self.get_by_name(name)
-    net = KnowledgeSpaceNetLib::KnowledgeNet.get_by_name(name)
+  def self.find(name)
+    net = KnowledgeSpaceNetLib::KnowledgeNet.find(name)
     self.new(net)
   end
 

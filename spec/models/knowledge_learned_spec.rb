@@ -13,8 +13,8 @@ describe KnowledgeLearned do
     @net.find_set_adapter_by_id("set-#{id}")
   end
 
-  def net(name)
-    KnowledgeNetAdapter.get_by_name(name)
+  def net(id)
+    KnowledgeNetAdapter.find(id)
   end
 
   before{

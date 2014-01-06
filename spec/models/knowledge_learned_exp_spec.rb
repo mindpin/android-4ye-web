@@ -9,8 +9,8 @@ describe KnowledgeLearned do
     @net.find_checkpoint_adapter_by_id("checkpoint-#{id}")
   end
 
-  def net(name)
-    KnowledgeNetAdapter.get_by_name(name)
+  def net(id)
+    KnowledgeNetAdapter.find(id)
   end
 
   before{
