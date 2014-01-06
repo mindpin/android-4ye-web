@@ -22,6 +22,8 @@ Android4yeWeb::Application.routes.draw do
       get :net
       get :set
       get :node
+      get :random
+      get :randoms
     end
   end
 end

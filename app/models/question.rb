@@ -1,6 +1,7 @@
 # coding: utf-8
 class Question
   include Mongoid::Document
+  include Mongoid::Timestamps
 
 	SINGLE_CHOICE   = "single_choice"
 	MULTIPLE_CHOICE = "multiple_choices"
@@ -56,6 +57,18 @@ class Question
     self.net.find_node_by_id(self.knowledge_node_id)
   end
 
+  def node_id
+    node.id
+  end
+
+  def id
+    _id
+  end
+
+  def as_json(options={})
+    super(options.merge :except => [:_id, :knowledge_node_id, :knowledge_net_id], :methods => [:id, :node_id, :net_id])
+  end
+
   def self.from_json(json)
     self.new(JSON.parse(json))
   end
@@ -72,18 +85,21 @@ class Question
     coder['difficulty'] = difficulty
   end
 
-  module KnowledgeNodeRandomQuestion
-    def all_questions
-      Question.where(:knowledge_node_id => self.id)
-    end
+  def self.all_questions_for_node_id(net_id, node_id)
+    Question.where(:knowledge_net_id => net_id, :knowledge_node_id => node_id)
+  end
 
-    def get_random_question(except_ids)
-      questions = all_questions.where(:_id.nin => except_ids)
-      count = questions.count
-      return if count == 0
+  def self.random_question_for_node_id(net_id, node_id)
+    result = self.random_questions_for_node_id(net_id, node_id, 1)
+    result ? result.first : result
+  end
 
-      offset = (0..(count - 1)).sort_by{rand}.first
-      questions.skip(offset).first
-    end
+  def self.random_questions_for_node_id(net_id, node_id, number=1)
+    questions = all_questions_for_node_id(net_id, node_id)
+    count = questions.count
+    return if count == 0
+
+    offsets = (0..(count - 1)).sort_by{rand}.slice(0, number).collect
+    offsets.map {|offset| questions.skip(offset).first}
   end
 end
