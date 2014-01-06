@@ -1,7 +1,6 @@
-class UsersController < ApplicationController
+class KnowledgeNetsController < ApplicationController
   def exp_info
-    current_user = User.find params[:id]
-    status = current_user.experience_status(params[:course])
+    status = current_user.experience_status(params[:id])
     render :json => {
                       :level            => status.level,
                       :level_up_exp_num => status.level_up_exp_num,
