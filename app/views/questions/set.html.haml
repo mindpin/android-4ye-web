@@ -1,0 +1,5 @@
+.page-question-set
+  %h1 #{@set.name} - 知识节点列表
+  - @set.nodes.each do |node|
+    .knowledge-node
+      = link_to node.name, node_questions_path(:id => node.id, :net_id => @net.id)

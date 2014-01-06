@@ -1,0 +1,5 @@
+.page-question-net
+  %h1 #{@net.name} - 知识单元列表
+  - @net.sets.each do |set|
+    .knowledge-set
+      = link_to set.name, set_questions_path(:id => set.id, :net_id => @net.id)
