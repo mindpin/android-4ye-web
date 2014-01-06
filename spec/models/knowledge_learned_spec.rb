@@ -13,12 +13,8 @@ describe KnowledgeLearned do
     @net.find_set_adapter_by_id("set-#{id}")
   end
 
-  def net(id)
-    KnowledgeNetAdapter.find(id)
-  end
-
   before{
-    @net = net("test1")
+    @net = KnowledgeNetAdapter.test1_instance
     @user = FactoryGirl.create :user
     #set-8 => set-2
     #set-2 => set-1 => checkpoint-1 => set-4
