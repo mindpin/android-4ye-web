@@ -5,10 +5,10 @@ class KnowledgeLearned
   field :user_id,     :type => Integer
   field :model_type,  :type => String
   field :model_id,    :type => String
-  field :course,      :type => String
+  field :net_id,      :type => String
 
   validates :model_id, :uniqueness => {
-    :scope => [:user_id, :model_type, :course]
+    :scope => [:user_id, :model_type, :net_id]
   }
 
   def self.create_by_params(params)
@@ -16,13 +16,13 @@ class KnowledgeLearned
       :user_id  => params[:user].id,
       :model_id => params[:model].id,
       :model_type => params[:model].class.name,
-      :course => params[:model].net.name
+      :net_id => params[:model].net.id
     )
   end
 
   def self.is_learned?(model, user)
     KnowledgeLearned.where(
-      :course     => model.net.name,
+      :net_id     => model.net.id,
       :model_id   => model.id,
       :model_type => model.class.name,
       :user_id    => user.id

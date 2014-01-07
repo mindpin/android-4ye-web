@@ -39,7 +39,7 @@ describe KnowledgeLearned do
 
     describe "每天获取的经验值" do
       before {
-        @course = "test1"
+        @net_id = "test1"
 
         Timecop.travel(Time.now - 1.day) do
           node(31).do_learn(@user)
@@ -54,12 +54,12 @@ describe KnowledgeLearned do
 
       it "1天前的经验值" do
         @selected_date = Time.now.to_date - 1.day
-        @user.get_by_day(@course, @selected_date).should == 10
+        @user.get_by_day(@net_id, @selected_date).should == 10
       end
 
       it "2天前的经验值" do
         @selected_date = Time.now.to_date - 2.day
-        @user.get_by_day(@course, @selected_date).should == 15
+        @user.get_by_day(@net_id, @selected_date).should == 15
       end
 
     end
