@@ -54,12 +54,12 @@ describe KnowledgeLearned do
 
       it "1天前的经验值" do
         @selected_date = Time.now.to_date - 1.day
-        KnowledgeLearned.get_exp_by_day(@user, @course, @selected_date).should == 10
+        ExperienceLog.get_by_day(@user, @course, @selected_date).should == 10
       end
 
       it "2天前的经验值" do
         @selected_date = Time.now.to_date - 2.day
-        KnowledgeLearned.get_exp_by_day(@user, @course, @selected_date).should == 15
+        ExperienceLog.get_by_day(@user, @course, @selected_date).should == 15
       end
 
     end
