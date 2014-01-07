@@ -13,7 +13,7 @@ describe KnowledgeLearned do
   describe "每次做完练习增加的经验值" do
 
     before{
-      @net = KnowledgeNetAdapter.test1_instance
+      @net = KnowledgeNetAdapter.find("test1")
       @user = FactoryGirl.create :user
     }
 

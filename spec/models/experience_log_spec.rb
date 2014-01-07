@@ -6,7 +6,7 @@ describe ExperienceLog do
 
   describe ExperienceLog::UserMethods do
     before(:all){
-      net = KnowledgeSpaceNetLib::KnowledgeNet.find("javascript")
+      net = KnowledgeSpaceNetLib::KnowledgeNet.find("test1")
       @checkpoint = net.find_checkpoint_by_id("checkpoint-1")
       @node = net.find_node_by_id("node-31")
     }
@@ -15,7 +15,7 @@ describe ExperienceLog do
       @delta_num = 8
       @model = {:type => 'set', :id=>"set_101"}
       @data_json = user.to_json
-      @course = 'javascript'
+      @course = 'test1'
     }
 
     describe '.add_exp' do

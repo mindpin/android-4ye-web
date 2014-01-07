@@ -8,7 +8,7 @@ describe KnowledgeNetsController do
 
   context '#exp_info init' do
     before {
-      get :exp_info, {:id => 'javascript'} 
+      get :exp_info, {:id => 'test1'} 
       @json = JSON::parse(response.body)
     }
 
@@ -21,14 +21,15 @@ describe KnowledgeNetsController do
 
   context '#exp_info add exp' do
     before {
-      net = KnowledgeSpaceNetLib::KnowledgeNet.find("javascript")
+      net_id = "test1"
+      net = KnowledgeSpaceNetLib::KnowledgeNet.find(net_id)
       @checkpoint = net.find_checkpoint_by_id("checkpoint-1")
       @node = net.find_node_by_id("node-31")
 
-      @user.add_exp('javascript',8,@checkpoint,@user.to_json)
-      @user.add_exp('javascript',14,@node,@user.to_json)
+      @user.add_exp(net_id,8,@checkpoint,@user.to_json)
+      @user.add_exp(net_id,14,@node,@user.to_json)
 
-      get :exp_info, {id: 'javascript'}
+      get :exp_info, {id: net_id}
       @json = JSON::parse(response.body)
     }
 
@@ -46,15 +47,16 @@ describe KnowledgeNetsController do
     }
 
     it {
-      net = @json.first
-      net["id"].should == "javascript"
-      net["name"].should == "javascript"
+      @json.should == [
+        {"id"=>"javascript", "name"=>"javascript"}, 
+        {"id"=>"test1", "name"=>"测试1"}
+      ]
     }
   end
 
   context '#knowledge_nets sets' do
     before {
-      get :sets, :id => 'javascript'
+      get :sets, :id => 'test1'
       @json = JSON::parse(response.body)
     }
 

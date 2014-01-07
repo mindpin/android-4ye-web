@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe Question do
   let(:node_id) {"node-4"}
-  let(:net_id) {"javascript"}
+  let(:net_id) {"test1"}
   let(:choices) {["A", "B", "C", "D"]}
   4.times do |i|
     let(:"q#{i + 1}") do

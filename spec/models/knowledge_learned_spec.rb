@@ -14,7 +14,7 @@ describe KnowledgeLearned do
   end
 
   before{
-    @net = KnowledgeNetAdapter.test1_instance
+    @net = KnowledgeNetAdapter.find("test1")
     @user = FactoryGirl.create :user
     #set-8 => set-2
     #set-2 => set-1 => checkpoint-1 => set-4

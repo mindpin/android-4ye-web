@@ -15,7 +15,7 @@ describe KnowledgeNodesController do
       @user = FactoryGirl.create :user
       sign_in @user
 
-      @net_id = "javascript"
+      @net_id = "test1"
       @node_id = "node-31"
 
       @net = KnowledgeNetAdapter.find(@net_id)
