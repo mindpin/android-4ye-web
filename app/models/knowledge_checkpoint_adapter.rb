@@ -4,6 +4,12 @@ class KnowledgeCheckpointAdapter
     @checkpoint = checkpoint
   end
 
+  def learned_set_adapters
+    @checkpoint.learned_sets.map do |set|
+      KnowledgeSetAdapter.new(set)
+    end
+  end
+
   def is_learned?(user)
     KnowledgeLearned.is_learned?(@checkpoint, user)
   end

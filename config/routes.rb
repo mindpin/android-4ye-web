@@ -13,6 +13,7 @@ Android4yeWeb::Application.routes.draw do
   resources :knowledge_nets, :shallow => true do
     member do
       get :exp_info
+      get :sets
     end
     collection do
       get :list

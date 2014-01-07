@@ -4,6 +4,53 @@ class KnowledgeNetAdapter
     @net = net
   end
 
+  def set_adapters
+    @net.sets.map do |set|
+      KnowledgeSetAdapter.new(set)
+    end
+  end
+
+  def checkpoint_adapters
+    @net.checkpoints.map do |checkpoint|
+      KnowledgeCheckpointAdapter.new(checkpoint)
+    end
+  end
+
+  def sets_hash(user)
+    sets = self.set_adapters.map do |sa|
+      {
+        :id   => sa.set.id,
+        :name => sa.set.name,
+        :icon => sa.set.icon,
+        :deep => sa.set.deep,
+        :is_unlocked => sa.is_unlocked?(user),
+        :is_learned  => sa.is_learned?(user)
+      }
+    end
+
+    checkpoints = self.checkpoint_adapters.map do |ca|
+      {
+        :id => ca.checkpoint.id,
+        :learned_sets => ca.learned_set_adapters.map{|sa|sa.set.id},
+        :is_unlocked => ca.is_unlocked?(user),
+        :is_learned  => ca.is_learned?(user)
+      }
+    end
+
+    relations = self.net.relations.map do |relation|
+      {
+        :parent => relation.parent.id,
+        :child  => relation.child.id
+      }
+    end
+
+    {
+      :sets => sets,
+      :checkpoints => checkpoints,
+      :relations => relations
+    }
+  end
+
   def self.test1_instance
     net = KnowledgeSpaceNetLib::KnowledgeNet.test1_instance
     self.new(net)
