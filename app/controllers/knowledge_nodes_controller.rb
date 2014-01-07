@@ -3,23 +3,24 @@ class KnowledgeNodesController < ApplicationController
   before_filter :pre_load
   
   def pre_load
-    @course = KnowledgeNetAdapter.find(params[:net_id]) if params[:net_id]
-    @node = @course.find_node_adapter_by_id(params[:id]) if params[:id]
+    @net = KnowledgeNetAdapter.find(params[:net_id]) if params[:net_id]
+
+    @node = @net.find_node_adapter_by_id(params[:id]) if params[:id]
   end
 
   def test_success
-
     add_exp_num = @node.do_learn(current_user)
+    today = Time.now.to_date
 
-    day_4 = KnowledgeLearned.get_exp_by_day(current_user, @course, Time.now.to_date - 4.day)
-    day_3 = KnowledgeLearned.get_exp_by_day(current_user, @course, Time.now.to_date - 3.day)
-    day_2 = KnowledgeLearned.get_exp_by_day(current_user, @course, Time.now.to_date - 2.day)
-    day_1 = KnowledgeLearned.get_exp_by_day(current_user, @course, Time.now.to_date - 1.day)
-    day_now = KnowledgeLearned.get_exp_by_day(current_user, @course, Time.now.to_date)
+    day_4 = KnowledgeLearned.get_exp_by_day(current_user, @net, today - 4.day)
+    day_3 = KnowledgeLearned.get_exp_by_day(current_user, @net, today - 3.day)
+    day_2 = KnowledgeLearned.get_exp_by_day(current_user, @net, today - 2.day)
+    day_1 = KnowledgeLearned.get_exp_by_day(current_user, @net, today - 1.day)
+    day_0 = KnowledgeLearned.get_exp_by_day(current_user, @net, today)
 
     render :json => {
-                      :add_exp_num    => add_exp_num,
-                      :history_info => [day_4, day_3, day_2, day_1, day_now]
+                      :add_exp_num => add_exp_num,
+                      :history_info => [day_4, day_3, day_2, day_1, day_0]
                     }
   end
 

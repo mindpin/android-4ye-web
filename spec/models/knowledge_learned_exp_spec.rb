@@ -13,8 +13,7 @@ describe KnowledgeLearned do
   describe "每次做完练习增加的经验值" do
 
     before{
-      @course = "test1"
-      @net = net(@course)
+      @net = KnowledgeNetAdapter.test1_instance
       @user = FactoryGirl.create :user
     }
 
@@ -37,8 +36,11 @@ describe KnowledgeLearned do
     }
 
 
+
     describe "每天获取的经验值" do
       before {
+        @course = "test1"
+
         Timecop.travel(Time.now - 1.day) do
           node(31).do_learn(@user)
         end
@@ -62,7 +64,10 @@ describe KnowledgeLearned do
 
     end
 
+
+
   end
 
 
 end
+

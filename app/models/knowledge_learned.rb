@@ -37,7 +37,7 @@ class KnowledgeLearned
       :created_at => selected_date.beginning_of_day..selected_date.end_of_day
     )
 
-    exp.map { |e| e.after_exp - e.before_exp }.inject(:+)
+    exp.map { |e| e.after_exp - e.before_exp }.inject(:+) || 0
   end
 
 end

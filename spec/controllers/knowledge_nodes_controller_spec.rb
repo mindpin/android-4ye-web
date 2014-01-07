@@ -9,22 +9,13 @@ describe KnowledgeNodesController do
     @net.find_checkpoint_adapter_by_id("checkpoint-#{id}")
   end
 
-  def net(id)
-    KnowledgeNetAdapter.find(id)
-  end
 
   before{
     @user = FactoryGirl.create :user
-
     sign_in @user
 
-    net_id = "javascript"
-    node_id = "node-31"
-    net_adapter = KnowledgeNetAdapter.find(net_id)
-    node_adapter = net_adapter.find_node_adapter_by_id(node_id)
 
-    @id = node_adapter.node.id
-
+    @net = KnowledgeNetAdapter.test1_instance
 
     Timecop.travel(Time.now - 4.day) do
       node(31).do_learn(@user)
@@ -49,20 +40,20 @@ describe KnowledgeNodesController do
       node(31).do_learn(@user)
     end
 
-    Timecop.travel(Time.now) do
-      node(31).do_learn(@user)
-    end
 
   }
 
   context '#test_success' do
     before {
-      get :test_success, {net_id: @net_id, id: @id}
+      @net_id = "javascript"
+      @node_id = "node-31"
+
+      get :test_success, {:net_id => @net_id, :id => @node_id} 
       @response = JSON::parse(response.body)
     }
 
     it "add_exp_num" do
-      @response['add_exp_num'].should == 5
+      @response['add_exp_num'].should == 10
     end
 
     it "history_info" do
