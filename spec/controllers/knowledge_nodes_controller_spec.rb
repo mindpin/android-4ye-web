@@ -43,6 +43,10 @@ describe KnowledgeNodesController do
         node(31).do_learn(@user)
       end
 
+      Timecop.travel(Time.now) do
+        node(31).do_learn(@user)
+      end
+
       get :test_success, {:net_id => @net_id, :id => @node_id} 
       @response = JSON::parse(response.body)
     }
