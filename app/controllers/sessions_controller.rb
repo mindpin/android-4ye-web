@@ -8,6 +8,7 @@ class SessionsController < Devise::SessionsController
     set_flash_message(:notice, :signed_in) if is_navigational_format?
     sign_in(resource_name, resource)
     render :json => {
+      :id     => current_user.id,
       :name   => current_user.name,
       :login  => current_user.login,
       :email  => current_user.email,
