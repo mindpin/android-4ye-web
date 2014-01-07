@@ -1,13 +1,14 @@
 require "spec_helper"
 
-describe UsersController do
+describe KnowledgeNetsController do
   before{
     @user = FactoryGirl.create :user
+    sign_in @user
   }
 
   context '#exp_info init' do
     before {
-      get :exp_info, {id: @user.id}, {:course => 'javascript'} 
+      get :exp_info, {:id => 'javascript'} 
       @json = JSON::parse(response.body)
     }
 
@@ -27,7 +28,7 @@ describe UsersController do
       @user.add_exp('javascript',8,@checkpoint,@user.to_json)
       @user.add_exp('javascript',14,@node,@user.to_json)
 
-      get :exp_info, {id: @user.id,:course => 'javascript'}
+      get :exp_info, {id: 'javascript'}
       @json = JSON::parse(response.body)
     }
 

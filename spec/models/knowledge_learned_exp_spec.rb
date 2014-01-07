@@ -9,10 +9,8 @@ describe KnowledgeLearned do
     @net.find_checkpoint_adapter_by_id("checkpoint-#{id}")
   end
 
-  def net(id)
-    KnowledgeNetAdapter.find(id)
-  end
 
+<<<<<<< HEAD
   describe "每次做完练习增加的经验值" do
 
     before{
@@ -69,4 +67,28 @@ describe KnowledgeLearned do
 
 
 
+=======
+  before{
+    @net = KnowledgeNetAdapter.test1_instance
+    @user = FactoryGirl.create :user
+  }
+
+  it{
+    # 第一次学习
+    exp_num = node(31).do_learn(@user)
+    exp_num.should == 10
+    # 第二次学习
+    exp_num = node(31).do_learn(@user)
+    exp_num.should == 5
+  }
+
+  it{
+    # 第一次学习
+    exp_num = checkpoint(1).do_learn(@user)
+    exp_num.should == 10
+    # 第二次学习
+    exp_num = checkpoint(1).do_learn(@user)
+    exp_num.should == 5
+  }
+>>>>>>> develop
 end

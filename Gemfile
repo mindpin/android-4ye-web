@@ -34,4 +34,4 @@ gem "mongoid", "~> 3.0.0"
 
 gem 'knowledge-space-net-lib',
     :git => 'git://github.com/mindpin/knowledge-space-net-lib.git',
-    :tag => '0.2.9'
+    :tag => '0.3.0'
