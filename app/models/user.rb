@@ -48,4 +48,5 @@ class User < ActiveRecord::Base
   end
 
   include ExperienceLog::UserMethods
+  include KnowledgeLearned::UserMethods
 end

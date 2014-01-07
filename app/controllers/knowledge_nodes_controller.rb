@@ -11,17 +11,12 @@ class KnowledgeNodesController < ApplicationController
 
   def test_success
     add_exp_num = @node.do_learn(current_user)
-    today = Time.now.to_date
 
-    day_4 = KnowledgeLearned.get_exp_by_day(current_user, @net_id, today - 4.day)
-    day_3 = KnowledgeLearned.get_exp_by_day(current_user, @net_id, today - 3.day)
-    day_2 = KnowledgeLearned.get_exp_by_day(current_user, @net_id, today - 2.day)
-    day_1 = KnowledgeLearned.get_exp_by_day(current_user, @net_id, today - 1.day)
-    day_0 = KnowledgeLearned.get_exp_by_day(current_user, @net_id, today)
+    history_info = current_user.get_history_experience(@net_id)
 
     render :json => {
                       :add_exp_num => add_exp_num,
-                      :history_info => [day_4, day_3, day_2, day_1, day_0]
+                      :history_info => history_info
                     }
   end
 
