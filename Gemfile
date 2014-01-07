@@ -1,4 +1,6 @@
-source 'http://rubygems.org'
+# source 'http://rubygems.org'
+source 'http://ruby.taobao.org'
+
 
 gem 'rails', '3.2.12' # RAILS #不要更新 3.2.13 有性能问题，等 3.2.14
 gem 'mysql2', '0.3.11' # MYSQL数据库连接
@@ -15,6 +17,7 @@ group :test do
   gem 'database_cleaner', '~> 1.2.0'
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'factory_girl_rails', '~> 4.2.1'
+  gem 'timecop', '0.6.1' # 用于在测试中调整时间
 end
 
 gem 'unicorn', '4.6.2'

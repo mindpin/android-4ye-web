@@ -17,6 +17,20 @@ class ExperienceLog
     User.find(user_id)
   end
 
+
+  def self.get_by_day(user, course, selected_date)
+
+    exp = ExperienceLog.where(
+      :user_id => user.id,
+      :course     => course,
+      :created_at => selected_date.beginning_of_day..selected_date.end_of_day
+    )
+
+    exp.map { |e| e.after_exp - e.before_exp }.inject(:+) || 0
+  end
+
+
+
   module UserMethods
     def experience_logs
       ExperienceLog.where(:user_id => self.id)

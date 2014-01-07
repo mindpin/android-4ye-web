@@ -29,4 +29,22 @@ class KnowledgeLearned
     ).exists?
   end
 
+
+
+  module UserMethods
+    def get_history_experience(net_id)
+      today = Time.now.to_date
+
+      day_4 = ExperienceLog.get_by_day(self, net_id, today - 4.day)
+      day_3 = ExperienceLog.get_by_day(self, net_id, today - 3.day)
+      day_2 = ExperienceLog.get_by_day(self, net_id, today - 2.day)
+      day_1 = ExperienceLog.get_by_day(self, net_id, today - 1.day)
+      day_0 = ExperienceLog.get_by_day(self, net_id, today)
+
+      [day_4, day_3, day_2, day_1, day_0]
+    end
+  end
+
+
+
 end
