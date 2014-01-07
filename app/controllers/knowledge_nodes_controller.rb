@@ -3,7 +3,8 @@ class KnowledgeNodesController < ApplicationController
   before_filter :pre_load
   
   def pre_load
-    @net = KnowledgeNetAdapter.find(params[:net_id]) if params[:net_id]
+    @net_id = params[:net_id] if params[:net_id]
+    @net = KnowledgeNetAdapter.find(@net_id)
 
     @node = @net.find_node_adapter_by_id(params[:id]) if params[:id]
   end
@@ -12,11 +13,11 @@ class KnowledgeNodesController < ApplicationController
     add_exp_num = @node.do_learn(current_user)
     today = Time.now.to_date
 
-    day_4 = KnowledgeLearned.get_exp_by_day(current_user, @net, today - 4.day)
-    day_3 = KnowledgeLearned.get_exp_by_day(current_user, @net, today - 3.day)
-    day_2 = KnowledgeLearned.get_exp_by_day(current_user, @net, today - 2.day)
-    day_1 = KnowledgeLearned.get_exp_by_day(current_user, @net, today - 1.day)
-    day_0 = KnowledgeLearned.get_exp_by_day(current_user, @net, today)
+    day_4 = KnowledgeLearned.get_exp_by_day(current_user, @net_id, today - 4.day)
+    day_3 = KnowledgeLearned.get_exp_by_day(current_user, @net_id, today - 3.day)
+    day_2 = KnowledgeLearned.get_exp_by_day(current_user, @net_id, today - 2.day)
+    day_1 = KnowledgeLearned.get_exp_by_day(current_user, @net_id, today - 1.day)
+    day_0 = KnowledgeLearned.get_exp_by_day(current_user, @net_id, today)
 
     render :json => {
                       :add_exp_num => add_exp_num,

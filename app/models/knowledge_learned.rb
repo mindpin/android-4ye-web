@@ -31,6 +31,7 @@ class KnowledgeLearned
 
 
   def self.get_exp_by_day(user, course, selected_date)
+    
     exp = ExperienceLog.where(
       :user_id => user.id,
       :course     => course,
