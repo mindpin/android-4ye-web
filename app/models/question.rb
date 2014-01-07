@@ -1,4 +1,6 @@
 # coding: utf-8
+require "question_content_parser"
+
 class Question
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -57,16 +59,17 @@ class Question
     self.net.find_node_by_id(self.knowledge_node_id)
   end
 
-  def node_id
-    node.id
-  end
-
-  def id
-    _id
+  def make_content
+    QuestionContentParser.new(content).parse
   end
 
   def as_json(options={})
-    super(options.merge :except => [:_id, :knowledge_node_id, :knowledge_net_id], :methods => [:id, :node_id, :net_id])
+    json = super(options.merge :except => [:_id, :knowledge_node_id, :knowledge_net_id])
+    json[:content] = make_content
+    json[:id] = _id
+    json[:node_id] = knowledge_node_id
+    json[:net_id] = knowledge_net_id
+    json
   end
 
   def self.from_json(json)
