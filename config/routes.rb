@@ -17,4 +17,9 @@ Android4yeWeb::Application.routes.draw do
   end
 
   resources :questions
+
+  resources :knowledge_nets do
+    resources :knowledge_nodes
+  end
+  
 end

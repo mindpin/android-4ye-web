@@ -16,6 +16,8 @@ describe KnowledgeNodesController do
   before{
     @user = FactoryGirl.create :user
 
+    sign_in @user
+
     net_id = "javascript"
     node_id = "node-31"
     net_adapter = KnowledgeNetAdapter.find(net_id)
@@ -55,7 +57,7 @@ describe KnowledgeNodesController do
 
   context '#test_success' do
     before {
-      get :test_success, {id: @id}
+      get :test_success, {net_id: @net_id, id: @id}
       @response = JSON::parse(response.body)
     }
 
