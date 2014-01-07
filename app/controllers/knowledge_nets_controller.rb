@@ -16,4 +16,14 @@ class KnowledgeNetsController < ApplicationController
     @net_adapter = KnowledgeNetAdapter.find(params[:id])
     render :json => @net_adapter.sets_hash(current_user)
   end
+
+  def random_question
+    result = Question.random_question_for_node_id(params[:net_id], params[:id])
+    result = result ? result.as_json : result
+    render :json => result
+  end
+
+  def random_questions
+    render :json => Question.random_questions_for_node_id(params[:net_id], params[:id], 13).map {|question| question.as_json}
+  end
 end
