@@ -11,6 +11,7 @@ describe SessionsController do
     post :create, :user => {:login => @user.login, :password => '1234'} 
     json = JSON::parse(response.body)
     response.status.should == 200
+    json["id"].should == @user.id
     json["name"].should == @user.name
     json["login"].should == @user.login
     json["email"].should == @user.email
