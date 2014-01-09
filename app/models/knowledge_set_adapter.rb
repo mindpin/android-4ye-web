@@ -30,6 +30,14 @@ class KnowledgeSetAdapter
     end
 
     {
+      :id   => @set.id,
+      :name => @set.name,
+      :icon => @set.icon,
+      :deep => @set.deep,
+      :is_unlocked => self.is_unlocked?(user),
+      :is_learned  => self.is_learned?(user),
+      :node_count  => self.set.nodes.count,
+      :learned_node_count => self.learned_node_count(user),
       :nodes => nodes,
       :relations => relations
     }

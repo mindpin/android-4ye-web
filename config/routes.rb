@@ -11,19 +11,14 @@ end
 
 Android4yeWeb::Application.routes.draw do
   resources :knowledge_nets do
-    resources :knowledge_sets do
-      member do
-        get :nodes
-      end
-    end
     member do
       get :exp_info
-      get :sets
     end
     collection do
       get :list
     end
 
+    resources :knowledge_sets
     resources :knowledge_nodes do
       member do
         get :test_success
