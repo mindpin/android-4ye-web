@@ -24,7 +24,9 @@ class KnowledgeNetAdapter
         :icon => sa.set.icon,
         :deep => sa.set.deep,
         :is_unlocked => sa.is_unlocked?(user),
-        :is_learned  => sa.is_learned?(user)
+        :is_learned  => sa.is_learned?(user),
+        :node_count  => sa.set.nodes.count,
+        :learned_node_count => sa.learned_node_count(user)
       }
     end
 
@@ -45,6 +47,8 @@ class KnowledgeNetAdapter
     end
 
     {
+      :id   => self.net.id,
+      :name => self.net.name,
       :sets => sets,
       :checkpoints => checkpoints,
       :relations => relations
