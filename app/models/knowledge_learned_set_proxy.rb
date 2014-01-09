@@ -20,4 +20,10 @@ class KnowledgeLearnedSetProxy
     end
     return true
   end
+
+  def self.learned_nodes_count(set, user)
+    set.nodes.select do |node|
+      KnowledgeLearned.is_learned?(node, user)
+    end.count
+  end
 end
