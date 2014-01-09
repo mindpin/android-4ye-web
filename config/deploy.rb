@@ -6,7 +6,7 @@ set :domain, '4ye.mindpin.com'
 set :deploy_to, '/web/2013/4ye'
 set :current_path, 'current'
 set :repository, 'git://gitcafe.com/ben7th/android-4ye-web.git'
-set :branch, 'master'
+set :branch, 'release'
 set :user, 'root'
 
 set :shared_paths, [
