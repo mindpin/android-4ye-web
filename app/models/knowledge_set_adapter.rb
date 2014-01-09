@@ -42,4 +42,8 @@ class KnowledgeSetAdapter
   def is_unlocked?(user)
     KnowledgeLearnedSetProxy.is_unlocked?(@set, user)
   end
+
+  def learned_node_count(user)
+    KnowledgeLearnedSetProxy.learned_node_count(@set, user)
+  end
 end

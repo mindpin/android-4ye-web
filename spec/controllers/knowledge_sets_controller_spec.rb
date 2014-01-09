@@ -8,7 +8,7 @@ describe KnowledgeSetsController do
 
   context '#knowledge_sets nodes' do
     before{
-      get :nodes, {:net_id => 'test1', :id => 'set-8'} 
+      get :nodes, {:knowledge_net_id => 'test1', :id => 'set-8'} 
       @json = JSON::parse(response.body)
     }
 

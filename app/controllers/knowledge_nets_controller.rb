@@ -12,7 +12,7 @@ class KnowledgeNetsController < ApplicationController
     render :json => KnowledgeNetAdapter.list_hash
   end
 
-  def sets
+  def show
     @net_adapter = KnowledgeNetAdapter.find(params[:id])
     render :json => @net_adapter.sets_hash(current_user)
   end

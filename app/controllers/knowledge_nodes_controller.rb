@@ -3,7 +3,7 @@ class KnowledgeNodesController < ApplicationController
   before_filter :pre_load
   
   def pre_load
-    @net_id = params[:net_id] if params[:net_id]
+    @net_id = params[:knowledge_net_id] if params[:knowledge_net_id]
     @net = KnowledgeNetAdapter.find(@net_id)
 
     @node = @net.find_node_adapter_by_id(params[:id]) if params[:id]

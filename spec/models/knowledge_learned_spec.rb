@@ -297,4 +297,15 @@ describe KnowledgeLearned do
     node(13).is_learned?(@user).should == true
     node(12).is_learned?(@user).should == true
   }
+
+  it{
+    set(8).set.nodes.count.should == 5
+    set(8).learned_node_count(@user).should == 0
+
+    node(31).do_learn(@user)
+    node(32).do_learn(@user)
+    node(33).do_learn(@user)
+
+    set(8).learned_node_count(@user).should == 3
+  }
 end
