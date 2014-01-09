@@ -64,11 +64,9 @@ class Question
   end
 
   def as_json(options={})
-    json = super(options.merge :except => [:_id, :knowledge_node_id, :knowledge_net_id])
+    json = super(options.merge :except => [:_id])
     json[:content] = make_content
     json[:id] = _id
-    json[:node_id] = knowledge_node_id
-    json[:net_id] = knowledge_net_id
     json
   end
 
