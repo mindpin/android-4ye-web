@@ -25,18 +25,20 @@ class QuestionsController < ApplicationController
   def new
     @net = KnowledgeSpaceNetLib::KnowledgeNet.find(params[:net_id])
     @question = Question.new
+    @question.knowledge_net_id = @net.id
     @node = @net.find_node_by_id(params[:node_id])
+    @question.knowledge_node_id = @node.id
   end
 
   def edit
     @question = Question.find(params[:id])
-    @yaml = @question ? @question.to_yaml.split("\n")[1..-1].join("\n") : ""
+    @net = @question.net
+    @node = @question.node
   end
 
   def create
-    @question = Question.from_yaml(params[:yaml])
-    @question.knowledge_node_id = params[:node_id]
-    @question.knowledge_net_id = params[:net_id]
+    @question = Question.new(params[:question])
+    @question.choices = nil if Question::TRUE_FALSE == params[:question][:kind]
     @question.save
     redirect_to node_questions_path(
       :id     => @question.knowledge_node_id,
@@ -45,11 +47,9 @@ class QuestionsController < ApplicationController
   end
 
   def update
-    hash = YAML.load(params[:yaml])
     @question = Question.find(params[:id])
-    @question.update_attributes hash
-    @question.knowledge_node_id = params[:node_id]
-    @question.knowledge_net_id = params[:net_id]
+    @question.update_attributes(params[:question])
+    @question.choices = nil if Question::TRUE_FALSE == params[:question][:kind]
     @question.save
     redirect_to :back
   end

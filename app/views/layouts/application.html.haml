@@ -3,7 +3,8 @@
   %head
     %title Android4yeWeb
     = stylesheet_link_tag "application", :media => "all"
-    = javascript_include_tag "application"
     = csrf_meta_tags
   %body
     = yield
+    = javascript_include_tag "http://code.jquery.com/jquery-1.10.1.min.js"
+    = javascript_include_tag "application"

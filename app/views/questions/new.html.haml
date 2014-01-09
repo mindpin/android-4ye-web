@@ -1,14 +1,7 @@
-.page-new-question
+.page-question-form.new
   .header
     %h1 新建测试题
     .ops
       = link_to "返回", node_questions_path(:net_id => @net.id, :id => @node.id)
   .question-form
-    = form_tag questions_path, :method => :post do
-      = hidden_field_tag "net_id", @net.id
-      %p= label_tag "node_id", "知识点"
-      - opts = @node.set.nodes.map {|node| [node.name, node.id]}
-      %p= select_tag "node_id", options_for_select(opts, [@node.name, @node.id])
-      %p= label_tag "yaml", "内容"
-      %p= text_area_tag "yaml", @yaml, :rows => 20, :cols => 64
-      %p= submit_tag "提交"
+    = render "form"

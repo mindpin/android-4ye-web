@@ -10,14 +10,20 @@ class Question
 	TRUE_FALSE      = "true_false"
   FILL            = "fill"
 
+  STANDARD_FORMAT = "standard_format"
+  MARKDOWN_FORMAT = "markdown_format"
+
   field :knowledge_node_id, :type => String
   field :knowledge_net_id,  :type => String
   field :kind,              :type => String
   field :content,           :type => String
+  field :content_type,      :type => String
   field :choices,           :type => Array
   field :difficulty,        :type => String
   field :answer,            :type => String
 
+  validates :kind, :presence => true
+  
   def is_single_choice?
     self.kind == SINGLE_CHOICE
   end
@@ -60,7 +66,8 @@ class Question
   end
 
   def make_content
-    QuestionContentParser.new(content).parse
+    return MarkdownQuestionContentParser.new(content).parse if MARKDOWN_FORMAT == content_type
+    StandardQuestionContentParser.new(content).output
   end
 
   def as_json(options={})
@@ -76,14 +83,6 @@ class Question
 
   def self.from_yaml(yaml)
     self.new(YAML.load(yaml))
-  end
-
-  def encode_with coder
-    coder['kind'] = kind
-    coder['content'] = content
-    coder['choices'] = choices
-    coder['answer'] = answer
-    coder['difficulty'] = difficulty
   end
 
   def self.all_questions_for_node_id(net_id, node_id)
@@ -102,5 +101,13 @@ class Question
 
     offsets = (0..(count - 1)).sort_by{rand}.slice(0, number).collect
     offsets.map {|offset| questions.skip(offset).first}
+  end
+
+  def self.formats
+    [["标准录入格式", STANDARD_FORMAT], ["Markdown格式", MARKDOWN_FORMAT]]
+  end
+
+  def self.kinds
+    [["单选题", SINGLE_CHOICE], ["多选题", MULTIPLE_CHOICE], ["判断题", TRUE_FALSE], ["填空题", FILL]]
   end
 end

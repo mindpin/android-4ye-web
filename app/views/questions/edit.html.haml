@@ -4,11 +4,4 @@
     .ops
       = link_to "返回", node_questions_path(:id => @question.knowledge_node_id, :net_id => @question.knowledge_net_id)
   .question-form
-    = form_tag question_path(@question), :method => :put do
-      = hidden_field_tag "net_id", @question.knowledge_net_id
-      %p= label_tag "node_id", "知识点"
-      - opts = @question.set.nodes.map {|node| [node.name, node.id]}
-      %p= select_tag "node_id", options_for_select(opts, [@question.node.name, @question.node.id])
-      %p= label_tag "yaml", "内容"
-      %p= text_area_tag "yaml", @yaml, :rows => 20, :cols => 64
-      %p= submit_tag "提交"
+    = render "form"
