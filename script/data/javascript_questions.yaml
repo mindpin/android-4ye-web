@@ -1,0 +1,710 @@
+---
+- knowledge_node_id: node-31
+  kind: single_choice
+  difficulty: 1
+  content: |
+    ```javascript
+    var count = txt.length;
+    ```
+    上面的代码中，count 的值是 2，那么 txt 应该是
+  choices:
+  - |
+    ""
+  - |
+    "a"
+  - |
+    "in"
+  - |
+    "for"
+  answer: C
+- knowledge_node_id: node-31
+  kind: true_false
+  difficulty: 1
+  content: |
+    ```javascript
+    var x = "John";
+    var y = "john";
+    ```
+    上面的代码中，x 和 y 表示的是相同的字符串
+  answer: F
+- knowledge_node_id: node-31
+  kind: multiple_choices
+  difficulty: 1
+  content: |
+    以下哪些是正确的字符串定义
+  choices:
+  - |
+    "C"
+  - |
+    'C'
+  - |
+    C
+  answer: AB
+- knowledge_node_id: node-31
+  kind: single_choice
+  difficulty: 1
+  content: |
+    ```javascript
+    var txt = "Hello World";
+    var count = txt.length;
+    ```
+    上面的代码中，count 的值是
+  choices:
+  - 10
+  - 11
+  - 12
+  - 13
+  answer: B
+- knowledge_node_id: node-31
+  kind: multiple_choices
+  difficulty: 2
+  content: |
+    下面哪些是不正确的
+  choices:
+  - |
+    "hello" 和 'hello' 相同
+  - |
+    "Hello" 和 "hello" 相同
+  - |
+    'Hello' 和 'hello' 相同
+  - |
+    "hello" 和 'Hello' 相同
+  answer: BCD
+- knowledge_node_id: node-31
+  kind: multiple_choices
+  difficulty: 1
+  content: |
+    以下哪些是正确的字符串定义
+  choices:
+  - |
+    """
+  - |
+    "'"
+  - |
+    '"'
+  - |
+    ""'"
+  answer: BC
+- knowledge_node_id: node-31
+  kind: true_false
+  difficulty: 1
+  content: |
+    "'" 和 '"' 是相同的字符串
+  answer: F
+- knowledge_node_id: node-31
+  kind: fill
+  difficulty: 2
+  content: |
+    ```javascript
+      var count = [%].length
+    ```
+    补全代码，让 count 的值是 2
+  choices:
+  - |
+    'a'
+  - |
+    'a '
+  - |
+    '"'
+  - |
+    ' in'
+  answer: |
+    'a '
+- knowledge_node_id: node-31
+  kind: true_false
+  difficulty: 1
+  content: |
+    "a'b" 和 'a"b' 是相同的字符串
+  answer: F
+- knowledge_node_id: node-31
+  kind: true_false
+  difficulty: 1
+  content: |
+    "ēa" 不是一个合理的字符串
+  answer: F
+- knowledge_node_id: node-31
+  kind: true_false
+  difficulty: 1
+  content: |
+    "a'b" 的字符串长度是 2
+  answer: F
+- knowledge_node_id: node-31
+  kind: true_false
+  difficulty: 1
+  content: |
+    a'b 和 "a'b" 是相同的字符串
+  answer: F
+- knowledge_node_id: node-32
+  kind: fill
+  difficulty: 1
+  content: |
+    ```javascript
+    [%]
+    ```
+    根据整数定义，请写出一个大100的整数
+  choices:
+  - 20
+  - -35
+  - 101
+  - 0
+  answer: 101
+- knowledge_node_id: node-33
+  kind: multiple_choices
+  difficulty: 1
+  content: |
+    下列选项中, 哪些是整数
+  choices:
+  - |
+    0
+  - |
+    -600
+  - |
+    100000
+  - |
+    .3e1
+  answer: ABC
+- knowledge_node_id: node-32
+  kind: true_false
+  difficulty: 1
+  content: |
+    00 是整数
+  answer: T
+- knowledge_node_id: node-32
+  kind: single_choice
+  difficulty: 1
+  content: |
+    ```javascript
+    var a = 0377
+    ```
+    上面的数字表示方式是
+  choices:
+  - "八进制"
+  - "十进制"
+  - 
+  - undefined
+  answer: A
+- knowledge_node_id: node-32
+  kind: single_choice
+  difficulty: 1
+  content: |
+    ```javascript
+    var a = 0xA
+    ```
+    上面的代码中, a 的值是多少
+  choices:
+  - 8
+  - 9
+  - 10
+  - 11
+  answer: C
+- knowledge_node_id: node-32
+  kind: true_false
+  difficulty: 1
+  content: |
+    ```javascript
+    var a = 095;
+    ```
+    上面的代码中, a 等于 95
+  answer: T
+- knowledge_node_id: node-33
+  kind: multiple_choices
+  difficulty: 2
+  content: |
+    下列选项中, 哪些不是整数
+  choices:
+  - |
+    0XCAFE9
+  - |
+    0XAA
+  - |
+    03H
+  - |
+    hello000
+  answer: CD
+- knowledge_node_id: node-32
+  kind: true_false
+  difficulty: 2
+  content: |
+    0Xff 是整数
+  answer: T
+- knowledge_node_id: node-32
+  kind: single_choice
+  difficulty: 2
+  content: |
+    下列选项中, 0377 转化为十进制是多少
+  choices:
+  - 377
+  - 0
+  - 255
+  - 32
+  answer: C
+- knowledge_node_id: node-32
+  kind: single_choice
+  difficulty: 2
+  content: |
+    下列选项中, 0Xff 转化为十进制是多少
+  choices:
+  - 24
+  - 255
+  - 321
+  - 0
+  answer: B
+- knowledge_node_id: node-32
+  kind: true_false
+  difficulty: 2
+  content: |
+    53 跟 0x35 相等
+  answer: T
+- knowledge_node_id: node-32
+  kind: single_choice
+  difficulty: 2
+  content: |
+    下列选项中, 八进制 026 转化为十进制是多少
+  choices:
+  - 255
+  - 0
+  - 26
+  - 22
+  answer: D
+- knowledge_node_id: node-33
+  kind: single_choice
+  difficulty: 1
+  content: |
+    下面哪个是小数
+  choices:
+  - |
+    1
+  - |
+    -1
+  - |
+    0.1
+  - |
+    "0.1"
+  answer: C
+- knowledge_node_id: node-33
+  kind: true_false
+  difficulty: 1
+  content: |
+    -0.1 不是小数
+  answer: F
+- knowledge_node_id: node-33
+  kind: multiple_choices
+  difficulty: 1
+  content: |
+    下面哪些不是小数
+  choices:
+  - |
+    "1.0"
+  - |
+    0
+  - |
+    1e-1
+  - |
+    "0.1"
+  answer: ABD
+- knowledge_node_id: node-33
+  kind: multiple_choices
+  difficulty: 1
+  content: |
+    下面哪些不是小数
+  choices:
+  - |
+    .1
+  - |
+    -1
+  - |
+    1
+  - |
+    "0.1"
+  answer: BCD
+- knowledge_node_id: node-33
+  kind: true_false
+  difficulty: 1
+  content: |
+    "0.1" 和 0.1 是相同的小数
+  answer: F
+- knowledge_node_id: node-33
+  kind: multiple_choices
+  difficulty: 1
+  content: |
+    下面哪些是小于 1 的小数
+  choices:
+  - |
+    1.3
+  - |
+    0.3
+  - |
+    1.0
+  - |
+    -1.1
+  answer: BD
+- knowledge_node_id: node-33
+  kind: multiple_choices
+  difficulty: 2
+  content: |
+    下面哪些是小于 1 的小数
+  choices:
+  - |
+    .3
+  - |
+    0.1e2
+  - |
+    12e-2
+  - |
+    0.3
+  answer: ACD
+- knowledge_node_id: node-33
+  kind: multiple_choices
+  difficulty: 2
+  content: |
+    和 0.1 相等的小数有哪些
+  choices:
+  - |
+    .1
+  - |
+    "0.1"
+  - |
+    1e-1
+  - |
+    .1e0
+  answer: ACD
+- knowledge_node_id: node-33
+  kind: true_false
+  difficulty: 2
+  content: |
+    2e-3 和 .2e-2 表示相同的小数
+  answer: T
+- knowledge_node_id: node-33
+  kind: true_false
+  difficulty: 2
+  content: |
+    -.1 不是一个小数
+  answer: F
+- knowledge_node_id: node-33
+  kind: true_false
+  difficulty: 2
+  content: |
+    -.5 小于 -.6
+  answer: F
+- knowledge_node_id: node-33
+  kind: multiple_choices
+  difficulty: 2
+  content: "以下哪些表达方式是不合法的？"
+  choices:
+  - |
+    05.8
+  - |
+    06.8
+  - |
+    07.8
+  - |
+    08.8
+  answer: ABC
+- knowledge_node_id: node-34
+  kind: single_choice
+  difficulty: 1
+  content: |
+    下列的选项中，哪个可以用来替代布尔值-真
+  choices:
+  - |
+    0
+  - |
+    1
+  - |
+    ""
+  - |
+    ''
+  answer: B
+- knowledge_node_id: node-34
+  kind: single_choice
+  difficulty: 1
+  content: |
+    下列选项中，哪个可以用来替代布尔值-假
+  choices:
+  - |
+    0
+  - |
+    "false"
+  - |
+    true
+  - |
+    "nothing"
+  answer: A
+- knowledge_node_id: node-34
+  kind: single_choice
+  difficulty: 1
+  content: |
+    下列选项中，哪个是正确的布尔值
+  choices:
+  - |
+    true
+  - |
+    "false"
+  - |
+    'true'
+  - |
+    1
+  answer: A
+- knowledge_node_id: node-34
+  kind: single_choice
+  difficulty: 1
+  content: |
+    下列选项中，哪个是布尔值-真
+  choices:
+  - |
+    1
+  - |
+    real
+  - |
+    true
+  - |
+    yes
+  answer: C
+- knowledge_node_id: node-34
+  kind: single_choice
+  difficulty: 1
+  content: |
+    下列选项中，哪个是布尔值-假
+  choices:
+  - |
+    wrong
+  - |
+    no
+  - |
+    0
+  - |
+    false
+  answer: D
+- knowledge_node_id: node-34
+  kind: fill
+  difficulty: 1
+  content: |
+    依次选出布尔值-真 [%]，与布尔值-假 [%]
+  choices:
+  - |
+    "true"
+  - |
+    1
+  - |
+    0
+  - |
+    false
+  - |
+    'no'
+  - |
+    true
+  answer: true,false
+- knowledge_node_id: node-34
+  kind: fill
+  difficulty: 2
+  content: |
+    [%] 的值为真
+  choices:
+  - |
+    ""
+  - |
+    false
+  - |
+    "false"
+  - |
+    no
+  answer: "\"false\""
+- knowledge_node_id: node-34
+  kind: fill
+  difficulty: 2
+  content: |
+    [%] 的值为假
+  choices:
+  - |
+    false
+  - |
+    no
+  - |
+    true
+  - |
+    "''"
+  answer: false
+- knowledge_node_id: node-34
+  kind: multiple_choices
+  difficulty: 1
+  content: |
+    下面哪些是正确的布尔值
+  choices:
+  - |
+    "false"
+  - |
+    false
+  - |
+    "true"
+  - |
+    true
+  answer: BD
+- knowledge_node_id: node-34
+  kind: true_false
+  difficulty: 1
+  content: JavaScript 中的布尔值实际上是整数0和1的别名
+  answer: F
+- knowledge_node_id: node-34
+  kind: true_false
+  difficulty: 1
+  content: JavaScript 中false与“false”相同
+  answer: F
+- knowledge_node_id: node-34
+  kind: true_false
+  difficulty: 1
+  content: JavaScript 中true与"true"不同
+  answer: T
+- knowledge_node_id: node-35
+  kind: single_choice
+  difficulty: 1
+  content: |
+    代码alert(str)运行结果如下图
+    ![file:///android_asset/questions/node_35/1.jpg]
+    str 的值是
+  choices:
+  - |
+    "5"\t""
+  - |
+    "5/"/\t/""
+  - |
+    "5\"\\t\""
+  answer: C
+- knowledge_node_id: node-35
+  kind: single_choice
+  difficulty: 2
+  content: |
+    ```javascript
+    var n = "\t".length
+    ```
+    上面的代码中，n 的值是
+  choices:
+  - 4
+  - 2
+  - 1
+  - 0
+  answer: C
+- knowledge_node_id: node-35
+  kind: single_choice
+  difficulty: 1
+  content: |
+    代码alert(str)运行结果如下图
+    ![file:///android_asset/questions/node_35/2.jpg]
+    str 的值是
+  choices:
+  - |
+    "C:\\dir\a.txt"
+  - |
+    "C:\\\\dir\\a.txt"
+  - |
+    "C:/\/\dir/\a.txt"
+  answer: B
+- knowledge_node_id: node-35
+  kind: single_choice
+  difficulty: 1
+  content: |
+    用（\b）表示
+  choices:
+  - "返回"
+  - "换行"
+  - "换页"
+  - "后退一格"
+  answer: D
+- knowledge_node_id: node-35
+  kind: single_choice
+  difficulty: 2
+  content: |
+    ```javascript
+    var str = "我们的\"爱人\"";
+    var n = str.length;
+    ```
+    上面的代码中，n 的值是
+  choices:
+  - 6
+  - 7
+  - 8
+  - 9
+  answer: B
+- knowledge_node_id: node-35
+  kind: single_choice
+  difficulty: 1
+  content: |
+    代码alert(str)运行结果如下图
+    ![file:///android_asset/questions/node_35/3.jpg]
+    str 的值是
+  choices:
+  - |
+    "hello\nworld"
+  - |
+    "hello\tworld"
+  - |
+    "hello/nworld"
+  - |
+    "hello/tworld"
+  answer: A
+- knowledge_node_id: node-35
+  kind: single_choice
+  difficulty: 2
+  content: |
+    ```javascript
+    var result = "a\bb".length;
+    ```
+    上面的代码中，result 的值是
+  choices:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  answer: C
+- knowledge_node_id: node-35
+  kind: single_choice
+  difficulty: 1
+  content: |
+    代码alert(val)运行结果如下图
+    ![file:///android_asset/questions/node_35/4.jpg]
+    代码中的 val 的值是
+  choices:
+  - |
+    "/n\n/n\n\\n"
+  - |
+    "//n/n//n/n\n"
+  - |
+    "/\n/n\/n/n\n"
+  answer: A
+- knowledge_node_id: node-35
+  kind: single_choice
+  difficulty: 1
+  content: |
+    代码alert(val)运行结果如下图
+    ![file:///android_asset/questions/node_35/5.jpg]
+    val 的值是
+  choices:
+  - |
+    "You /\\& me are singing!"
+  - |
+    "You \\& me are singing!"
+  - |
+    "You me are singing!"
+  answer: B
+- knowledge_node_id: node-35
+  kind: true_false
+  difficulty: 1
+  content: "在JavaScript中 \"\\~ ， \\n ， \\' \" 的结果是 \"~ ， n ， ' \""
+  answer: F
+- knowledge_node_id: node-35
+  kind: multiple_choices
+  difficulty: 1
+  content: |
+    下面哪些是有意义的转义字符
+  choices:
+  - "\\r"
+  - "\\n"
+  - "\\t"
+  - "\\u"
+  - "\\m"
+  - "\\k"
+  answer: ABCD
+- knowledge_node_id: node-35
+  kind: true_false
+  difficulty: 1
+  content: "在JavaScript中 \"\\\" ， \\\\ ， \\' \" 的结果是 \"\" ， \\ ， ' \""
+  answer: T
