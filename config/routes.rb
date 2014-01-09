@@ -10,7 +10,7 @@ end
 
 
 Android4yeWeb::Application.routes.draw do
-  resources :knowledge_nets, :shallow => true do
+  resources :knowledge_nets do
     resources :knowledge_sets do
       member do
         get :nodes
