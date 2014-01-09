@@ -4,5 +4,6 @@ FactoryGirl.define do
     sequence(:login){|n| "login_user_#{n}" }
     sequence(:email) {|n| "email_user_#{n}@163.com" }
     password '1234'
+    role :teacher
   end
 end

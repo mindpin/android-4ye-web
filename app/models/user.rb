@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
     self.where(:login => login).first || self.where(:email => login).first
   end
 
+  attr_accessible :role
+  validates :role, :presence => true
+  roles_field :roles_mask, :roles => [:admin, :manager, :teacher, :student]
+
   # ------------ 以上是用户登录相关代码，不要改动
   # ------------ 任何代码请在下方添加
 

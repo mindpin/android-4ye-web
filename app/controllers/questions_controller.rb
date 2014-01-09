@@ -1,4 +1,11 @@
 class QuestionsController < ApplicationController
+  before_filter :is_admin
+  def is_admin
+    if !current_user.is_admin?
+      render :status => 401, :text => 401
+    end
+  end
+
   def index
     @nets = KnowledgeSpaceNetLib::KnowledgeNet.all
   end
