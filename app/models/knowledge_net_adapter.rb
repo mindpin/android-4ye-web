@@ -33,6 +33,7 @@ class KnowledgeNetAdapter
     checkpoints = self.checkpoint_adapters.map do |ca|
       {
         :id => ca.checkpoint.id,
+        :deep => ca.checkpoint.deep,
         :learned_sets => ca.learned_set_adapters.map{|sa|sa.set.id},
         :is_unlocked => ca.is_unlocked?(user),
         :is_learned  => ca.is_learned?(user)
