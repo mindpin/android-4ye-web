@@ -55,7 +55,7 @@ describe ExperienceLog do
       it {
         status = user.experience_status(@net_id)
         status.level.should == 1
-        status.level_up_exp_num.should == ExperienceStatus::LEVEL_UP_EXP_NUM[0]
+        status.level_up_exp_num.should == ExperienceLog.get_level_up_exp(1)
         status.exp_num.should == 0
       }
 
@@ -63,17 +63,17 @@ describe ExperienceLog do
         user.add_exp(@net_id,8,@checkpoint,@data_json)
         status = user.experience_status(@net_id)
         status.level.should == 1
-        status.level_up_exp_num.should == ExperienceStatus::LEVEL_UP_EXP_NUM[0]
+        status.level_up_exp_num.should == ExperienceLog.get_level_up_exp(1)
         status.exp_num.should == 8
       }
 
       it {
-        user.add_exp(@net_id,8,@node,@data_json)
+        user.add_exp(@net_id,18,@node,@data_json)
         user.add_exp(@net_id,14,@checkpoint,@data_json)
         status = user.experience_status(@net_id)
         status.level.should == 2
-        status.level_up_exp_num.should == ExperienceStatus::LEVEL_UP_EXP_NUM[1]
-        status.exp_num.should == 12
+        status.level_up_exp_num.should == ExperienceLog.get_level_up_exp(2)
+        status.exp_num.should == 2
       }
     end
 
