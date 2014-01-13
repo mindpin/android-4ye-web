@@ -14,7 +14,7 @@ describe KnowledgeNetsController do
 
     it {
       @json['level'].should             == 1
-      @json['level_up_exp_num'].should  == ExperienceStatus::LEVEL_UP_EXP_NUM[0]
+      @json['level_up_exp_num'].should  == ExperienceLog.get_level_up_exp(1)
       @json['exp_num'].should           == 0
     }
   end
@@ -26,7 +26,7 @@ describe KnowledgeNetsController do
       @checkpoint = net.find_checkpoint_by_id("checkpoint-1")
       @node = net.find_node_by_id("node-31")
 
-      @user.add_exp(net_id,8,@checkpoint,@user.to_json)
+      @user.add_exp(net_id,18,@checkpoint,@user.to_json)
       @user.add_exp(net_id,14,@node,@user.to_json)
 
       get :exp_info, {id: net_id}
@@ -35,8 +35,8 @@ describe KnowledgeNetsController do
 
     it {
       @json['level'].should == 2
-      @json['level_up_exp_num'].should  == ExperienceStatus::LEVEL_UP_EXP_NUM[1]
-      @json['exp_num'].should           == 12
+      @json['level_up_exp_num'].should  == ExperienceLog.get_level_up_exp(2)
+      @json['exp_num'].should           == 2
     }
   end
 
