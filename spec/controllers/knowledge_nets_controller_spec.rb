@@ -75,7 +75,7 @@ describe KnowledgeNetsController do
           {"id"=>"set-8", "name"=>"基础: 值", "icon"=>"set-8", "deep"=>1, "is_unlocked"=>true, "is_learned"=>false, "node_count"=>5, "learned_node_count"=>0}
         ], 
         "checkpoints"=>[
-          {"id"=>"checkpoint-1", "learned_sets"=>["set-1", "set-2", "set-8", "set-3"], "is_unlocked"=>true, "is_learned"=>false}
+          {"id"=>"checkpoint-1", "deep" => "4", "learned_sets"=>["set-1", "set-2", "set-8", "set-3"], "is_unlocked"=>true, "is_learned"=>false}
         ], 
         "relations"=>[
           {"parent"=>"set-1", "child"=>"checkpoint-1"}, 

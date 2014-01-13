@@ -35,7 +35,7 @@ gem "mongoid", "~> 3.0.0"
 
 gem 'knowledge-space-net-lib',
     :git => 'git://github.com/mindpin/knowledge-space-net-lib.git',
-    :tag => '0.3.2'
+    :tag => '0.3.3'
 
 gem 'roles-field',
     :git => 'git://github.com/mindpin/roles-field.git'
