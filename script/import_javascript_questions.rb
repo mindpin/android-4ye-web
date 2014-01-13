@@ -1,6 +1,7 @@
 raw_data = YAML.load_file("script/data/javascript_questions.yaml")
 
-Question.destroy_all if Question.count > 0
+query = Question.where(:knowledge_net_id => "javascript")
+query.destroy_all if query.count > 0
 
 raw_data.each do |hash|
   question = Question.new(hash)
@@ -9,4 +10,4 @@ raw_data.each do |hash|
   question.save
 end
 
-puts Question.count
+puts query.count

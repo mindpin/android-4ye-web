@@ -17,6 +17,16 @@ class ExperienceLog
     User.find(user_id)
   end
 
+  # 传入的级别是当前级别，求得的是当前级别到下一级别所需的经验
+  # 例如：传入的是 1 ，则求出的是 1 ~ 2 升级所需经验
+  # 传入的是 3 ，则求出的是 3 ~ 4 升级所需经验
+  def self.get_level_up_exp(level)
+    base = 30
+    p1 = 20 * (level - 1)
+    p2 = 10 * (level - 2) * (level - 1) / 2
+
+    return base + p1 + p2
+  end
 
   module UserMethods
     def experience_logs
