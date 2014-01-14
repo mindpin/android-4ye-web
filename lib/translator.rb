@@ -97,7 +97,7 @@ module Translator
     attr_reader :tokens
 
     def feed(text)
-      @tokens = text.split("\n").reject(&:empty?)
+      @tokens = text.each_line.map(&:strip).reject(&:empty?)
       self
     end
 
