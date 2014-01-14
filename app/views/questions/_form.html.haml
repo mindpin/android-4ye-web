@@ -1,4 +1,4 @@
-%p.choice{:style => "display:none;"}
+%p.choice.template{:style => "display:none;"}
   = text_area_tag "question[choices][]", nil, :rows => 2, :cols => 32
   = link_to "删除", "javascript:;", :style => "vertical-align:top;", :class => "remove-choice"
 = form_for @question do |f|
@@ -9,7 +9,8 @@
   %p= f.select :knowledge_node_id, options_for_select(opts, [@node.name, @node.id])
 
   %p= f.label :content_type, "内容录入语法"
-  - format_options = options_for_select(Question.formats, Question.formats[0])
+  - format = @question.content_type ? Question.formats.select {|x| @question.content_type == x[1]}[0] : Question.formats[0]
+  - format_options = options_for_select(Question.formats, format)
   %p= f.select :content_type, format_options
 
   %p= f.label :kind, "问题类型"
