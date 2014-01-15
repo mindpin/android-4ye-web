@@ -62,6 +62,7 @@ describe KnowledgeNetsController do
 
     it{
       @json.should == {
+        "exp_status" => {"level"=>1, "level_up_exp_num"=>30, "exp_num"=>0, "total_exp_num"=>0},
         "id"=>"test1", 
         "name"=>"测试1", 
         "sets"=>[

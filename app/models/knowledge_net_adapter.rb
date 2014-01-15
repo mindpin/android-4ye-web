@@ -47,7 +47,17 @@ class KnowledgeNetAdapter
       }
     end
 
+    status = user.experience_status(self.net.id)
+    exp_status = {
+                    :level            => status.level,
+                    :level_up_exp_num => status.level_up_exp_num,
+                    :exp_num          => status.exp_num,
+                    :total_exp_num    => status.total_exp_num
+                  }
+
+
     {
+      :exp_status => exp_status,
       :id   => self.net.id,
       :name => self.net.name,
       :sets => sets,
