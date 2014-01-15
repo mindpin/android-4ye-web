@@ -34,3 +34,4 @@ public/assets/*
 config/mongoid.yml
 
 .ruby-version
+deploy/sh/property.yaml

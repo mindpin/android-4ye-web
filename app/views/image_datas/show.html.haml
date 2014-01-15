@@ -1,0 +1,8 @@
+.page-image-data-show
+  .header
+    .ops
+      = link_to "返回", "/image_datas"
+  .show
+    %h1
+      = "图片地址是 :  #{@image_data.file.url}"
+    = image_tag @image_data.file.url

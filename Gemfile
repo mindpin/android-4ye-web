@@ -28,11 +28,13 @@ gem 'devise', '2.2.4'
 gem 'haml', '4.0.3' # HAML模板语言
 # 文件上传（fushang318增加） 
 gem "carrierwave", "0.8.0"
+gem 'carrierwave-mongoid'
+gem 'rest-client'
+gem 'carrierwave-aliyun'
 # carrierwave 用到的图片切割
 gem "mini_magick", "3.5.0", :require => false
 # mongoid
 gem "mongoid", "~> 3.0.0"
-
 gem 'knowledge-space-net-lib',
     :git => 'git://github.com/mindpin/knowledge-space-net-lib.git',
     :tag => '0.3.4'

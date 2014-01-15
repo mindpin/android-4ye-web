@@ -40,5 +40,5 @@ Android4yeWeb::Application.routes.draw do
     end
   end
 
-
+  resources :image_datas
 end

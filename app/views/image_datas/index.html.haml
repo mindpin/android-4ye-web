@@ -1,0 +1,10 @@
+.page-image-datas
+  .header
+    .ops
+      = link_to "新建", "/image_datas/new"
+
+  .image-data-list
+    %h1 图片列表
+    - ImageData.all.each do |image_data|
+      .image-data
+        = image_tag image_data.file.url
