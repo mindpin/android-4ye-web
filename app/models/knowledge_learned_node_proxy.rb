@@ -14,30 +14,42 @@ class KnowledgeLearnedNodeProxy
   end
 
   def self.do_learn(node, user)
-    return 0 if !KnowledgeLearnedNodeProxy.is_unlocked?(node, user)
+    return LearnResult.new(0) if !KnowledgeLearnedNodeProxy.is_unlocked?(node, user)
 
     if KnowledgeLearned.is_learned?(node, user)
       user.add_exp(node.net.id, 5, node, "")
-      return 5
+      return LearnResult.new(5)
     end
 
     user.add_exp(node.net.id, 10, node, "")
-    self._do_learn_without_validate_and_exp(node, user)
-    return 10
+    learned_item = self._do_learn_without_validate_and_exp(node, user)
+    return LearnResult.new(10, learned_item)
   end
 
   def self._do_learn_without_validate_and_exp(node, user)
-    KnowledgeLearned.create_by_params(:user => user, :model => node)
+    learned_item = []
+    if !KnowledgeLearned.is_learned?(node, user)
+      learned_item << node
+      KnowledgeLearned.create_by_params(:user => user, :model => node)
+    end
 
     if KnowledgeLearnedSetProxy.required_nodes_is_learned?(node.set, user)
-      KnowledgeLearned.create_by_params(:user => user, :model => node.set)
+      if !KnowledgeLearned.is_learned?(node.set, user)
+        learned_item << node.set
+        KnowledgeLearned.create_by_params(:user => user, :model => node.set)
+      end
 
       child = node.set.children.first
       if child.class == KnowledgeSpaceNetLib::KnowledgeCheckpoint
         if KnowledgeLearnedCheckpointProxy.include_sets_is_learned?(child, user)
-          KnowledgeLearned.create_by_params(:user => user, :model => child)
+          if !KnowledgeLearned.is_learned?(child, user)
+            learned_item << child
+            KnowledgeLearned.create_by_params(:user => user, :model => child)
+          end
         end
       end
     end
+
+    learned_item
   end
 end

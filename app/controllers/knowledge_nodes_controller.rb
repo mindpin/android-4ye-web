@@ -12,10 +12,11 @@ class KnowledgeNodesController < ApplicationController
   def test_success
     history_info = current_user.get_history_experience(@net_id)
 
-    add_exp_num = @node.do_learn(current_user)
+    learn_result = @node.do_learn(current_user)
 
     render :json => {
-                      :add_exp_num => add_exp_num,
+                      :learned_ids => learn_result.learned_ids,
+                      :add_exp_num => learn_result.exp_num,
                       :history_info => history_info
                     }
   end
