@@ -17,7 +17,6 @@ class KnowledgeSetAdapter
         :name     => na.node.name,
         :desc     => na.node.desc,
         :required => na.node.required,
-        :is_unlocked => na.is_unlocked?(user),
         :is_learned  => na.is_learned?(user)
       }
     end
@@ -34,7 +33,6 @@ class KnowledgeSetAdapter
       :name => @set.name,
       :icon => @set.icon,
       :deep => @set.deep,
-      :is_unlocked => self.is_unlocked?(user),
       :is_learned  => self.is_learned?(user),
       :node_count  => self.set.nodes.count,
       :learned_node_count => self.learned_node_count(user),

@@ -18,16 +18,15 @@ describe KnowledgeSetsController do
         "name"=>"基础: 值", 
         "icon"=>"set-8", 
         "deep"=>1, 
-        "is_unlocked"=>true, 
         "is_learned"=>false, 
         "node_count"=>5, 
         "learned_node_count"=>0, 
         "nodes"=>[
-          {"id"=>"node-31", "name"=>"字符串", "desc"=>"怎样在程序里表示一个字符串", "required"=>true, "is_unlocked"=>true, "is_learned"=>false}, 
-          {"id"=>"node-32", "name"=>"整数", "desc"=>"怎样在程序里表示一个整数", "required"=>true, "is_unlocked"=>false, "is_learned"=>false}, 
-          {"id"=>"node-33", "name"=>"小数", "desc"=>"怎样在程序里表示一个小数（浮点数）", "required"=>true, "is_unlocked"=>false, "is_learned"=>false}, 
-          {"id"=>"node-34", "name"=>"布尔值", "desc"=>"怎样在程序里表示一个布尔值", "required"=>true, "is_unlocked"=>false, "is_learned"=>false}, 
-          {"id"=>"node-35", "name"=>"转义字符", "desc"=>"字符串里的一类特殊字符的表示方法", "required"=>false, "is_unlocked"=>false, "is_learned"=>false}
+          {"id"=>"node-31", "name"=>"字符串", "desc"=>"怎样在程序里表示一个字符串", "required"=>true, "is_learned"=>false}, 
+          {"id"=>"node-32", "name"=>"整数", "desc"=>"怎样在程序里表示一个整数", "required"=>true, "is_learned"=>false}, 
+          {"id"=>"node-33", "name"=>"小数", "desc"=>"怎样在程序里表示一个小数（浮点数）", "required"=>true, "is_learned"=>false}, 
+          {"id"=>"node-34", "name"=>"布尔值", "desc"=>"怎样在程序里表示一个布尔值", "required"=>true, "is_learned"=>false}, 
+          {"id"=>"node-35", "name"=>"转义字符", "desc"=>"字符串里的一类特殊字符的表示方法", "required"=>false, "is_learned"=>false}
         ], 
         "relations"=>[
           {"parent"=>"node-31", "child"=>"node-32"}, 
