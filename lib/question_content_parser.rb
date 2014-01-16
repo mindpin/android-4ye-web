@@ -14,7 +14,10 @@ class StandardQuestionContentParser
     @lines_stack = []
     @code_lang = ''
 
-    @content.each_line do |line|
+    lines = @content.lines
+    @lc = lines.length
+
+    lines.each do |line|
       @line_num += 1
       s = line.strip
 
@@ -76,42 +79,34 @@ class StandardQuestionContentParser
   end
 
   def deal_text(s)
-    it = is_token(s)
-
-    if it
-      if @lines_stack.last == ''
-        @output << {
-          :type => :text,
-          :data => {
-            :content => pack_lines_stack
-          }
+    if _is_end_of_block?(s)
+      @output << {
+        :type => :text,
+        :data => {
+          :content => pack_lines_stack
         }
+      }
 
-        @token = it
-        @lines_stack = []
-        return
-      end
+      @token = is_token(s)
+      @lines_stack = []
+      return
     end
 
     @lines_stack << s
   end
 
   def deal_code(s)
-    it = is_token(s)
-
-    if it
-      if @lines_stack.last == ''
-        @output << {
-          :type => :code,
-          :data => {
-            :lang => @code_lang,
-            :content => QuestionCodeFormatter.new(pack_lines_stack, @code_lang).get_content
-          }
+    if _is_end_of_block?(s)
+      @output << {
+        :type => :code,
+        :data => {
+          :lang => @code_lang,
+          :content => QuestionCodeFormatter.new(pack_lines_stack, @code_lang).get_content
         }
+      }
 
-        @token = it
-        return
-      end
+      @token = is_token(s)
+      return
     end
 
     @lines_stack << s
@@ -124,6 +119,16 @@ class StandardQuestionContentParser
 
     @lines_stack = []
     return str
+  end
+
+  def _is_end_of_block?(s)
+    return true if is_token(s) && @lines_stack.last == ''
+    if @line_num == @lc
+      @lines_stack << s
+      @lines_stack << ''
+      return true
+    end
+    return false
   end
 end
 
