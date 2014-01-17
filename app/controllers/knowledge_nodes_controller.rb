@@ -15,7 +15,7 @@ class KnowledgeNodesController < ApplicationController
     learn_result = @node.do_learn(current_user)
 
     render :json => {
-                      :learned_ids => learn_result.learned_ids,
+                      :learned_items => learn_result.learned_items_hash,
                       :add_exp_num => learn_result.exp_num,
                       :history_info => history_info
                     }

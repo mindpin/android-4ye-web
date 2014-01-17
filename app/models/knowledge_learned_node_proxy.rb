@@ -22,20 +22,20 @@ class KnowledgeLearnedNodeProxy
     end
 
     user.add_exp(node.net.id, 10, node, "")
-    learned_item = self._do_learn_without_validate_and_exp(node, user)
-    return LearnResult.new(10, learned_item)
+    learned_items = self._do_learn_without_validate_and_exp(node, user)
+    return LearnResult.new(10, learned_items)
   end
 
   def self._do_learn_without_validate_and_exp(node, user)
-    learned_item = []
+    learned_items = []
     if !KnowledgeLearned.is_learned?(node, user)
-      learned_item << node
+      learned_items << node
       KnowledgeLearned.create_by_params(:user => user, :model => node)
     end
 
     if KnowledgeLearnedSetProxy.required_nodes_is_learned?(node.set, user)
       if !KnowledgeLearned.is_learned?(node.set, user)
-        learned_item << node.set
+        learned_items << node.set
         KnowledgeLearned.create_by_params(:user => user, :model => node.set)
       end
 
@@ -43,13 +43,13 @@ class KnowledgeLearnedNodeProxy
       if child.class == KnowledgeSpaceNetLib::KnowledgeCheckpoint
         if KnowledgeLearnedCheckpointProxy.include_sets_is_learned?(child, user)
           if !KnowledgeLearned.is_learned?(child, user)
-            learned_item << child
+            learned_items << child
             KnowledgeLearned.create_by_params(:user => user, :model => child)
           end
         end
       end
     end
 
-    learned_item
+    learned_items
   end
 end

@@ -15,19 +15,19 @@ class KnowledgeLearnedCheckpointProxy
     end
 
     user.add_exp(checkpoint.net.id, 10, checkpoint, "")
-    learned_item = self._do_learn_without_validate_and_exp(checkpoint, user)
-    return LearnResult.new(10, learned_item)
+    learned_items = self._do_learn_without_validate_and_exp(checkpoint, user)
+    return LearnResult.new(10, learned_items)
   end
 
   def self._do_learn_without_validate_and_exp(checkpoint, user)
-    learned_item = []
+    learned_items = []
     checkpoint.learned_sets.each do |set|
       set.nodes.each do |node|
         items = KnowledgeLearnedNodeProxy._do_learn_without_validate_and_exp(node, user)
-        learned_item += items
+        learned_items += items
       end
     end
 
-    learned_item
+    learned_items
   end
 end

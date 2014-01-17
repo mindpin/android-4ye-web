@@ -21,22 +21,22 @@ describe KnowledgeLearned do
       # 第一次学习
       learn_result = node(31).do_learn(@user)
       learn_result.exp_num.should == 10
-      learn_result.learned_ids.should == ["node-31"]
+      learn_result.learned_items_hash.should == [{:id=>"node-31", :type=>"KnowledgeNode"}]
       # 第二次学习
       learn_result = node(31).do_learn(@user)
       learn_result.exp_num.should == 5
-      learn_result.learned_ids.should == []
+      learn_result.learned_items_hash.should == []
     }
 
     it{
       # 第一次学习
       learn_result = checkpoint(1).do_learn(@user)
       learn_result.exp_num.should == 10
-      learn_result.learned_ids.should == ["node-1", "node-2", "node-3", "node-4", "node-5", "set-1", "node-6", "node-7", "node-8", "node-9", "set-2", "node-31", "node-32", "node-33", "node-34", "set-8", "node-35", "node-10", "node-11", "node-12", "node-13", "node-14", "set-3", "checkpoint-1"]
+      learn_result.learned_items_hash.should == [{:id=>"node-1", :type=>"KnowledgeNode"}, {:id=>"node-2", :type=>"KnowledgeNode"}, {:id=>"node-3", :type=>"KnowledgeNode"}, {:id=>"node-4", :type=>"KnowledgeNode"}, {:id=>"node-5", :type=>"KnowledgeNode"}, {:id=>"set-1", :type=>"KnowledgeSet"}, {:id=>"node-6", :type=>"KnowledgeNode"}, {:id=>"node-7", :type=>"KnowledgeNode"}, {:id=>"node-8", :type=>"KnowledgeNode"}, {:id=>"node-9", :type=>"KnowledgeNode"}, {:id=>"set-2", :type=>"KnowledgeSet"}, {:id=>"node-31", :type=>"KnowledgeNode"}, {:id=>"node-32", :type=>"KnowledgeNode"}, {:id=>"node-33", :type=>"KnowledgeNode"}, {:id=>"node-34", :type=>"KnowledgeNode"}, {:id=>"set-8", :type=>"KnowledgeSet"}, {:id=>"node-35", :type=>"KnowledgeNode"}, {:id=>"node-10", :type=>"KnowledgeNode"}, {:id=>"node-11", :type=>"KnowledgeNode"}, {:id=>"node-12", :type=>"KnowledgeNode"}, {:id=>"node-13", :type=>"KnowledgeNode"}, {:id=>"node-14", :type=>"KnowledgeNode"}, {:id=>"set-3", :type=>"KnowledgeSet"}, {:id=>"checkpoint-1", :type=>"KnowledgeCheckpoint"}]
       # 第二次学习
       learn_result = checkpoint(1).do_learn(@user)
       learn_result.exp_num.should == 5
-      learn_result.learned_ids.should == []
+      learn_result.learned_items_hash.should == []
     }
 
 
