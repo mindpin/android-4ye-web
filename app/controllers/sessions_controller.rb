@@ -7,12 +7,14 @@ class SessionsController < Devise::SessionsController
     self.resource = warden.authenticate!({:scope=>:user, :recall=>"sessions#sign_failure"})
     set_flash_message(:notice, :signed_in) if is_navigational_format?
     sign_in(resource_name, resource)
+    
+    
     render :json => {
       :id     => current_user.id,
       :name   => current_user.name,
       :login  => current_user.login,
       :email  => current_user.email,
-      :avatar => current_user.normal_avatar_url
+      :avatar => "#{request.protocol}#{request.host_with_port}#{current_user.normal_avatar_url}"
     }
   end
 
