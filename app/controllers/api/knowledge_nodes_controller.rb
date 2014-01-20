@@ -1,4 +1,4 @@
-class KnowledgeNodesController < ApplicationController
+class Api::KnowledgeNodesController < ApplicationController
 
   before_filter :pre_load
   

@@ -1,4 +1,4 @@
-class KnowledgeNetsController < ApplicationController
+class Api::KnowledgeNetsController < ApplicationController
   def exp_info
     status = current_user.experience_status(params[:id])
     render :json => {
