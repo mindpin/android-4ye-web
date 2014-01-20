@@ -1,5 +1,7 @@
 .page-question-set
   %h1 #{@set.name} - 知识节点列表
+  .ops
+    = link_to "返回上一级", net_questions_path(:id => @net.id)
   - @set.nodes.each do |node|
     .knowledge-node
       = link_to node.name, node_questions_path(:id => node.id, :net_id => @net.id)
