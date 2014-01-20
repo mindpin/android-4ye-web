@@ -15,7 +15,7 @@ describe SessionsController do
     json["name"].should == @user.name
     json["login"].should == @user.login
     json["email"].should == @user.email
-    json["avatar"].should == @user.normal_avatar_url
+    json["avatar"].should == "http://test.host#{@user.normal_avatar_url}"
     controller.current_user.should == @user
   end
 
