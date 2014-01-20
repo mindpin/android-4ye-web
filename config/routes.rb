@@ -1,12 +1,14 @@
 Android4yeWeb::Application.routes.draw do
   root :to => 'index#index'
+    # devise
+  devise_for :users, :path => 'api/account',
+                     :controllers => {
+                       :sessions => :"sessions"
+                     }
+end
 
+Android4yeWeb::Application.routes.draw do
   namespace :api do
-      # devise
-    devise_for :users, :path => 'account',
-                       :controllers => {
-                         :sessions => :"api::sessions"
-                       }
 
     resources :knowledge_nets do
       member do
