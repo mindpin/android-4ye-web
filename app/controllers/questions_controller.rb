@@ -75,6 +75,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     @question.update_attributes(params[:question])
     @question.choices = nil if Question::TRUE_FALSE == params[:question][:kind]
+    @question.concept_ids = [] if params[:question][:concept_ids].blank?
     @question.save
     redirect_to :back
   end
