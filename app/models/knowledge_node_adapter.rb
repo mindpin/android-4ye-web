@@ -15,4 +15,9 @@ class KnowledgeNodeAdapter
   def do_learn(user)
     KnowledgeLearnedNodeProxy.do_learn(@node, user)
   end
+
+  def available_concepts
+    ids = @node.ancestor_ids + [@node.id]
+    Concept.where(:knowledge_node_id.in => ids, :knowledge_net_id => @node.net.id)
+  end
 end

@@ -9,7 +9,7 @@
   %p= f.select :knowledge_node_id, options_for_select(opts, [@node.name, @node.id])
 
   %p= f.label :concepts, "相关概念"
-  - @question.available_concepts.each do |concept|
+  - KnowledgeNodeAdapter.new(@node).available_concepts.each do |concept|
     = label_tag do
       = concept.name
       - checked = @question.concepts.include?(concept)
