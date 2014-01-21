@@ -1,0 +1,11 @@
+= link_to "退出登录", "/account/sign_out"
+
+%h2 用户信息
+.item
+  = link_to "/api/user/profile", "/api/user/profile", :target => "_blank"
+
+%h2 知识网络列表
+- KnowledgeSpaceNetLib::KnowledgeNet.all.each do |net|
+  .item
+    = link_to net.name, "/debug/knowledge_nets/#{net.id}"
+    = link_to "/api/knowledge_nets/#{net.id}", "/api/knowledge_nets/#{net.id}", :target => "_blank"

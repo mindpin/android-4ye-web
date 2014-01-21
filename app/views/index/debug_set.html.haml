@@ -1,0 +1,8 @@
+= link_to "返回", "/debug/knowledge_nets/#{@net.id}"
+
+%h2 知识节点列表
+- @set.nodes.each do |node|
+  .item
+    = node.name
+    = link_to "/api/knowledge_nets/#{@net.id}/knowledge_nodes/#{node.id}/get_random_question","/api/knowledge_nets/#{@net.id}/knowledge_nodes/#{node.id}/get_random_question", :target => "_blank"
+    = link_to "/api/knowledge_nets/#{@net.id}/knowledge_nodes/#{node.id}/get_random_questions","/api/knowledge_nets/#{@net.id}/knowledge_nodes/#{node.id}/get_random_questions", :target => "_blank"

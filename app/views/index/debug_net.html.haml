@@ -1,0 +1,7 @@
+= link_to "返回", "/debug"
+
+%h2 知识单元列表
+- @net.sets.each do |set|
+  .item
+    = link_to set.name, "/debug/knowledge_nets/#{@net.id}/knowledge_sets/#{set.id}"
+    = link_to "/api/knowledge_nets/#{@net.id}/knowledge_sets/#{set.id}", "/api/knowledge_nets/#{@net.id}/knowledge_sets/#{set.id}", :target => "_blank"
