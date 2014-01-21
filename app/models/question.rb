@@ -80,7 +80,8 @@ class Question
   end
 
   def available_concepts
-    Concept.where(:knowledge_node_id => knowledge_node_id, :knowledge_net_id => knowledge_net_id)
+    ids = node.ancestor_ids + [knowledge_node_id]
+    Concept.where(:knowledge_node_id.in => ids, :knowledge_net_id => knowledge_net_id)
   end
 
   def self.from_json(json)
