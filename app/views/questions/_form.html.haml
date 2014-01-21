@@ -8,6 +8,13 @@
   - opts = @node.set.nodes.map {|node| [node.name, node.id]}
   %p= f.select :knowledge_node_id, options_for_select(opts, [@node.name, @node.id])
 
+  %p= f.label :concepts, "相关概念"
+  - @question.available_concepts.each do |concept|
+    = label_tag do
+      = concept.name
+      - checked = @question.concepts.include?(concept)
+      = check_box_tag "question[concept_ids][]", concept.id, checked
+
   %p= f.label :content_type, "内容录入语法"
   - format = @question.content_type ? Question.formats.select {|x| @question.content_type == x[1]}[0] : Question.formats[0]
   - format_options = options_for_select(Question.formats, format)

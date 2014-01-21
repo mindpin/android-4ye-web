@@ -25,6 +25,24 @@ class QuestionsController < ApplicationController
     @questions = Question.where(:knowledge_node_id => @node.id)
   end
 
+  def concepts
+    @net = KnowledgeSpaceNetLib::KnowledgeNet.find(params[:net_id])
+    @node = @net.find_node_by_id(params[:id])
+    @concepts = KnowledgeNodeAdapter.new(@node).concepts
+    @new = Concept.new(:knowledge_node_id => @node.id, :knowledge_net_id => @net.id)
+  end
+  
+  def create_concept
+    @concept = Concept.create(params[:concept])
+    redirect_to :back
+  end
+
+  def destroy_concept
+    @concept = Concept.find(params[:id])
+    @concept.destroy if @concept
+    redirect_to :back
+  end
+  
   def list
     @questions = Question.all
   end

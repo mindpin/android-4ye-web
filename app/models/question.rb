@@ -22,6 +22,8 @@ class Question
   field :difficulty,        :type => String
   field :answer,            :type => String
 
+  has_and_belongs_to_many :concepts
+  
   validates :kind, :presence => true
   
   def is_single_choice?
@@ -75,6 +77,10 @@ class Question
     json[:content] = make_content
     json[:id] = _id
     json
+  end
+
+  def available_concepts
+    Concept.where(:knowledge_node_id => knowledge_node_id, :knowledge_net_id => knowledge_net_id)
   end
 
   def self.from_json(json)

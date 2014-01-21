@@ -1,0 +1,21 @@
+.page-question-set
+  %h1 #{@node.name} - 概念管理
+  .ops 
+    = link_to "返回上一级", set_questions_path(:id => @node.set.id, :net_id => @net.id)
+  .concepts
+    - @concepts.each do |concept|
+      .concept
+        .title= concept.name
+        .desc= concept.desc
+        .delete= link_to "删除", destroy_concept_questions_path(:id => concept.id), :method => :delete, :confirm => "确认删除?"
+
+  .new-concept
+    = form_for @new, :url => create_concept_questions_path do |f|
+      = f.hidden_field :knowledge_node_id
+      = f.hidden_field :knowledge_net_id
+      %p= f.label :name, "概念"
+      %p= f.text_field :name
+
+      %p= f.label :desc, "描述"
+      %p= f.text_area :desc
+      %p= f.submit "提交"

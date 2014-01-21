@@ -10,4 +10,4 @@
         .content= question.content
         .ops
           = link_to "编辑", edit_question_path(question)
-          = link_to "删除", question_path(question), :method => :delete
+          = link_to "删除", question_path(question), :method => :delete, :confirm => "确认删除?"

@@ -5,3 +5,4 @@
   - @set.nodes.each do |node|
     .knowledge-node
       = link_to node.name, node_questions_path(:id => node.id, :net_id => @net.id)
+      = link_to "相关概念管理", concepts_questions_path(:id => node.id, :net_id => @net.id)
