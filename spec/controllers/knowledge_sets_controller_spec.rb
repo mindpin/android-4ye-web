@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe KnowledgeSetsController do
+describe Api::KnowledgeSetsController do
   before{
     @user = FactoryGirl.create :user
     sign_in @user

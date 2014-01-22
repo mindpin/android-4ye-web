@@ -56,8 +56,8 @@ class KnowledgeNetAdapter
     }
   end
 
-  def self.find(name)
-    net = KnowledgeSpaceNetLib::KnowledgeNet.find(name)
+  def self.find(id)
+    net = KnowledgeSpaceNetLib::KnowledgeNet.find(id)
     self.new(net)
   end
 

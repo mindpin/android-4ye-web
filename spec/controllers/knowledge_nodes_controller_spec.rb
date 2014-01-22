@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe KnowledgeNodesController do
+describe Api::KnowledgeNodesController do
   def node(id)
     @net.find_node_adapter_by_id("node-#{id}")
   end

@@ -11,4 +11,8 @@ when 'development'
   Android4yeWeb::Application.config.secret_token = '2a8951783a4afb81071d579640c1f36b077aa7e29bcb7e407f66844f518536c067df3196c5a1b1e2abc2089ceff7bdb74e484375b08ee342683d36a17302a132'
   Android4yeWeb::Application.config.session_store :cookie_store,
     :key => '_4ye_session_devel'
+when 'test'
+  Android4yeWeb::Application.config.secret_token = '1b7851783a4afb81071d579640c1f36b077aa7e29bcb7e407f66844f518536c067df3196c5a1b1e2abc2089ceff7bdb74e484375b08ee342683d36a17302a243'
+  Android4yeWeb::Application.config.session_store :cookie_store,
+    :key => '_4ye_session_test'
 end

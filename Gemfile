@@ -38,7 +38,7 @@ gem "mini_magick", "3.5.0", :require => false
 gem "mongoid", "~> 3.0.0"
 gem 'knowledge-space-net-lib',
     :git => 'git://github.com/mindpin/knowledge-space-net-lib.git',
-    :tag => '0.3.5'
+    :tag => '0.3.6'
 
 gem 'roles-field',
     :git => 'git://github.com/mindpin/roles-field.git'
