@@ -44,7 +44,27 @@ class KnowledgeLearned
       [day_4, day_3, day_2, day_1, day_0]
     end
 
-    def can_learn_knowledge_node(net_id)
+    def learned_knowledge_nodes(net_id)
+      net_adapter = KnowledgeNetAdapter.find(net_id)
+
+      learned_set = net_adapter.set_adapters.select do |set_adapter|
+        set_adapter.is_unlocked?(self)
+      end
+      
+      learned_set.map do |set_adapter|
+        set_adapter.node_adapters
+      end.flatten.select do |node_adapter|
+        node_adapter.is_learned?(self)
+      end
+    end
+
+    def learned_knowledge_node_ids(net_id)
+      learned_knowledge_nodes(net_id).map do |node_adapter|
+        node_adapter.node.id
+      end
+    end
+
+    def can_learn_knowledge_nodes(net_id)
       net_adapter = KnowledgeNetAdapter.find(net_id)
 
       can_learn_set = net_adapter.set_adapters.select do |set_adapter|
@@ -59,8 +79,8 @@ class KnowledgeLearned
 
     end
 
-    def can_learn_knowledge_node_id(net_id)
-      can_learn_knowledge_node(net_id).map do |node_adapter|
+    def can_learn_knowledge_node_ids(net_id)
+      can_learn_knowledge_nodes(net_id).map do |node_adapter|
         node_adapter.node.id
       end
     end

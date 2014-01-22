@@ -308,6 +308,7 @@ describe KnowledgeLearned do
 
     set(8).learned_node_count(@user).should == 3
 
-    @user.can_learn_knowledge_node_id(@net.net.id).should == ["node-34", "node-35"]
+    @user.can_learn_knowledge_node_ids(@net.net.id).should == ["node-34", "node-35"]
+    @user.learned_knowledge_node_ids(@net.net.id).should == ["node-31", "node-32", "node-33"]
   }
 end
