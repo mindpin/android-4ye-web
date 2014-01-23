@@ -1,0 +1,10 @@
+- url = @update_url ? @update_url : create_concept_questions_path
+= form_for @concept, :url => url do |f|
+  = f.hidden_field :knowledge_node_id
+  = f.hidden_field :knowledge_net_id
+  %p= f.label :name, "概念"
+  %p= f.text_field :name
+
+  %p= f.label :desc, "描述"
+  %p= f.text_area :desc
+  %p= f.submit "提交"
