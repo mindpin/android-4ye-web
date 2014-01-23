@@ -12,22 +12,20 @@ class Concept
 
   def test_count(user)
     record = ConceptTestRecord.where(:user_id => user.id, :concept_id => self.id).first
-    record ? 0 : record
+    record ? record.total_tests : 0
   end
 
   def do_correct(user)
-    record = ConceptTestRecord.init_by(user, self)
-    record.do_correct!
+    ConceptTestRecord.init_by(user, self).do_correct!
   end
   
   def do_error(user)
-    record = ConceptTestRecord.init_by(user, self)
-    record.do_error!
+    ConceptTestRecord.init_by(user, self).do_error!
   end
 
   def learned_node_questions(user)
     node_ids = user.learned_knowledge_node_ids(knowledge_net_id)
-    Question.where(:knowledge_node_id.in => node_ids, :_ids.in => question_ids)
+    Question.where(:knowledge_node_id.in => node_ids, :_id.in => question_ids)
   end
 
   def self.concepts_from(net_id, node_ids)
@@ -71,6 +69,15 @@ class Concept
     def query_concepts(net_id, is_learned, is_unlocked)
       node_ids = self.query_knowledge_node_ids(net_id, is_learned, is_unlocked)
       Concept.concepts_from(net_id, node_ids)
+    end
+
+    def learned_node_random_questions_for_concept(concept, number = 1)
+      questions = concept.learned_node_questions(self)
+      count = questions.count
+      return [] if count == 0
+
+      offsets = (0..(count - 1)).sort_by{rand}.slice(0, number).collect
+      offsets.map {|offset| questions.skip(offset).first}
     end
   end
 
