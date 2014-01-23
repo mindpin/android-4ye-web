@@ -29,8 +29,20 @@ class Api::KnowledgeNetsController < ApplicationController
 
   def concepts
     net_id = params[:id]
-    is_learned = params[:is_learned]
-    is_unlocked = params[:is_unlocked]
+    is_learned = case params[:is_learned]
+      when "true" then true
+      when "false" then false
+      else
+        nil
+    end
+
+    is_unlocked = case params[:is_unlocked]
+      when "true" then true
+      when "false" then false
+      else
+        nil
+    end
+
     concepts = current_user.query_concepts(net_id, is_learned, is_unlocked)
     result = concepts.map{|concept| concept.to_hash(current_user)}
     render :json => result

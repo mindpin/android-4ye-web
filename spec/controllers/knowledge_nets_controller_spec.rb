@@ -116,7 +116,7 @@ describe Api::KnowledgeNetsController do
 
       @node_adapter_31.do_learn(@user)
 
-      get :concepts, :id => 'test1', :is_learned => true
+      get :concepts, :id => 'test1', :is_learned => 'true'
       @json = JSON::parse(response.body)
     }
 
