@@ -1,9 +1,15 @@
 .page-question-node
-  .header
-    %h1 #{@node.name} - 测试题管理
-    .ops
-      = link_to "新建", new_question_path(:node_id => @node.id, :net_id => @net.id)
-      = link_to "返回上一级", set_questions_path(:id => @node.set.id, :net_id => @net.id)
+  %h1 #{@node.name} - 测试题管理
+  .nav
+    = link_to "首页", questions_path
+    >
+    = link_to @net.name, net_questions_path(:id => "javascript")
+    >
+    = link_to @node.set.name, set_questions_path(:id => @node.set.id, :net_id => @net.id)
+    >
+    = link_to @node.name, node_questions_path(:id => @node.id, :net_id => @net.id), :class => "current"
+  .ops
+    = link_to "新建", new_question_path(:node_id => @node.id, :net_id => @net.id)
   .question-list
     - @questions.each do |question|
       .question
