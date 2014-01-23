@@ -16,6 +16,7 @@ Android4yeWeb::Application.routes.draw do
     resources :knowledge_nets do
       member do
         get :exp_info
+        get :concepts
       end
       collection do
         get :list
