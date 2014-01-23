@@ -6,6 +6,11 @@ class Concept
   field :desc, :type => String
   field :knowledge_node_id, :type => String
   field :knowledge_net_id, :type => String
+  field :id, :type => String
+  before_create :generate_concept_id
+  def generate_concept_id
+    self.id = randstr
+  end
 
   has_and_belongs_to_many :questions
   has_many :concept_test_records
@@ -42,6 +47,7 @@ class Concept
     
   def to_hash(user)
     {
+      :id   => self.id,
       :name => self.name,
       :desc => self.desc,
       :is_learned => knowledge_node_adapter.is_learned?(user),

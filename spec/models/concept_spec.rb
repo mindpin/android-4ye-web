@@ -24,6 +24,24 @@ describe Concept do
     end
   end
 
+  context "id" do
+    before{
+      @net_id = 'test1'
+      @net = KnowledgeNetAdapter.find(@net_id)
+      @node_adapter_31 = @net.find_node_adapter_by_id("node-31")
+
+      @node_31_concept = FactoryGirl.create :concept, {
+        :knowledge_node_id => @node_adapter_31.node.id,
+        :knowledge_net_id => @net_id
+      }
+    }
+
+    it{
+      # 自定义了 id 用的 randstr
+      @node_31_concept.id.size.should == 8
+    }
+  end
+
   context "concepts" do
     before{
       @net_id = 'test1'
