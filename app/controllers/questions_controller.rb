@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
   def node
     @net = KnowledgeSpaceNetLib::KnowledgeNet.find(params[:net_id])
     @node = @net.find_node_by_id(params[:id])
-    @questions = Question.where(:knowledge_node_id => @node.id)
+    @questions = Question.where(:knowledge_node_id => @node.id, :knowledge_net_id => @net.id)
   end
 
   def concepts
