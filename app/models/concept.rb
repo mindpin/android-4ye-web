@@ -27,7 +27,7 @@ class Concept
 
   def learned_node_questions(user)
     node_ids = user.learned_knowledge_node_ids(knowledge_net_id)
-    Question.where(:knowledge_node_id.in => node_ids, :_ids.in => question_ids)
+    Question.where(:knowledge_node_id.in => node_ids, :_id.in => question_ids)
   end
 
   def self.concepts_from(net_id, node_ids)
@@ -43,6 +43,15 @@ class Concept
     def can_learn_concepts(net_id)
       node_ids = self.can_learn_knowledge_node_ids(net_id)
       Concept.concepts_from(net_id, node_ids)
+    end
+
+    def learned_node_random_questions_for_concept(concept, number = 1)
+      questions = concept.learned_node_questions(self)
+      count = questions.count
+      return [] if count == 0
+
+      offsets = (0..(count - 1)).sort_by{rand}.slice(0, number).collect
+      offsets.map {|offset| questions.skip(offset).first}
     end
   end
 

@@ -34,6 +34,11 @@ Android4yeWeb::Application.routes.draw do
     get "/knowledge_nets/:net_id/knowledge_nodes/:id/get_random_questions" => "knowledge_nets#random_questions"
     get "/user/profile" => 'index#user_profile'
                        
+    resources :concepts do
+      member do
+        get :learned_node_random_questions
+      end
+    end
   end
 
 
