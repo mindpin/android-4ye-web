@@ -1,0 +1,6 @@
+.page-edit-concept
+  %h1 编辑概念 #{@concept.name}
+  .ops
+    = link_to "返回", concepts_questions_path(:id => @concept.knowledge_node_id, :net_id => @concept.knowledge_net_id)
+  .edit-form
+    = render "concept_form"

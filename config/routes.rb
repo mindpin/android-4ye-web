@@ -56,6 +56,8 @@ Android4yeWeb::Application.routes.draw do
       get :set
       get :node
       get :concepts
+      get :edit_concept
+      put :update_concept
       delete :destroy_concept
       post :create_concept
     end

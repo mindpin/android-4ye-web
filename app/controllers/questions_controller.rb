@@ -29,7 +29,19 @@ class QuestionsController < ApplicationController
     @net = KnowledgeSpaceNetLib::KnowledgeNet.find(params[:net_id])
     @node = @net.find_node_by_id(params[:id])
     @concepts = KnowledgeNodeAdapter.new(@node).available_concepts
-    @new = Concept.new(:knowledge_node_id => @node.id, :knowledge_net_id => @net.id)
+    @concept = Concept.new(:knowledge_node_id => @node.id, :knowledge_net_id => @net.id)
+  end
+
+  def edit_concept
+    @concept = Concept.find(params[:id])
+    @update_url = update_concept_questions_path(:id => @concept.id)
+  end
+  
+  def update_concept
+    concept = Concept.find(params[:id])
+    concept.update_attributes(params[:concept])
+    return redirect_to concepts_questions_path(:id => concept.knowledge_node_id, :net_id => concept.knowledge_net_id)
+
   end
   
   def create_concept
