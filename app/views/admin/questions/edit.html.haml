@@ -1,0 +1,14 @@
+.page-question-form.edit
+  %h1.title 编辑测试题
+  .nav
+    = link_to "首页", admin_questions_path
+    >
+    = link_to @net.name, net_admin_questions_path(:id => @net.id)
+    >
+    = link_to @node.set.name, set_admin_questions_path(:id => @node.set.id, :net_id => @net.id)
+    >
+    = link_to @node.name, node_admin_questions_path(:id => @node.id, :net_id => @net.id)
+    >
+    = link_to "编辑测试题", edit_admin_question_path(:id => @question.id), :class => "current"
+  .question-form.form
+    = render "form"

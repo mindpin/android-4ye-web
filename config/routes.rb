@@ -42,27 +42,24 @@ Android4yeWeb::Application.routes.draw do
       end
     end
   end
-
-
-  
-  resources :questions do
-    collection do
-      get :list
-      get :net
-      get :set
-      get :node
-      get :concepts
-      get :edit_concept
-      put :update_concept
-      delete :destroy_concept
-      post :create_concept
-    end
-  end
-
 end
 
 Android4yeWeb::Application.routes.draw do
   namespace :admin do
+    resources :questions do
+      collection do
+        get :list
+        get :net
+        get :set
+        get :node
+        get :concepts
+        get :edit_concept
+        put :update_concept
+        delete :destroy_concept
+        post :create_concept
+      end
+    end
+
     root :to => 'index#index'
     resources :image_datas
     get "/debug" => "debug#index"
