@@ -4,7 +4,13 @@ jQuery ->
   $choice = $question_form.find(".choice.template")
 
   $add.on "click", ->
-    $choice.clone().removeClass("template").show().insertAfter(jQuery(this).parent())
+    $widgets = jQuery(this).closest(".control").find(".widgets")
+    $clone = $choice.clone()
+    $clone.removeClass("template").appendTo($widgets).slideDown();
+    $widgets.slideDown() if $widgets.length > 0
 
   jQuery(document).on "click", ".remove-choice", ->
-    jQuery(this).parent().remove()
+    $widgets = jQuery(this).closest(".widgets")
+    jQuery(this).parent().slideUp ->
+      jQuery(this).remove()
+      $widgets.slideUp() if $widgets.children().length == 0

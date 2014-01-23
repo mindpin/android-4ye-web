@@ -10,5 +10,5 @@
     = link_to @node.name, node_questions_path(:id => @node.id, :net_id => @net.id)
     >
     = link_to "编辑测试题", edit_question_path(:id => @question.id), :class => "current"
-  .question-form
+  .question-form.form
     = render "form"

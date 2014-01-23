@@ -1,4 +1,4 @@
-%p.choice.template{:style => "display:none;"}
+.widget.choice.text-input.template{:style => "display:none;"}
   = text_area_tag "question[choices][]", nil, :rows => 2, :cols => 32
   = link_to "删除", "javascript:;", :style => "vertical-align:top;", :class => "remove-choice"
 = form_for @question do |f|
@@ -25,24 +25,29 @@
     - format_options = options_for_select(Question.formats, format)
     = f.select :content_type, format_options
 
-  %p= f.label :kind, "问题类型"
-  - kind_options = Question.kinds
-  %p= f.select :kind, Question.kinds, :include_blank => true
+  .control
+    = f.label :kind, "问题类型"
+    - kind_options = Question.kinds
+    = f.select :kind, Question.kinds, :include_blank => true
 
-  %p= f.label :content, "内容"
-  %p= f.text_area :content, :rows => 20, :cols => 64
+  .control
+    = f.label :content, "内容"
+    = f.text_area :content, :rows => 20, :cols => 64
 
-  %p
+  .control
     = f.label :choices, "选项"
-    = link_to "添加", "javascript:;", :class => "add-choice"
+    .ops
+      = link_to "添加", "javascript:;", :class => "add-choice"
+    .widgets{:style => @question.choices ? "" : "display:none;"}
+      - if @question.choices
+        - @question.choices.each do |choice|
+          .widget.choice.text-input
+            = text_area_tag "question[choices][]", choice, :rows => 2, :cols => 32
+            = link_to "删除", "javascript:;", :style => "vertical-align:top;", :class => "remove-choice"        
 
-  - if @question.choices
-    - @question.choices.each do |choice|
-      %p.choice
-        = text_area_tag "question[choices][]", choice, :rows => 2, :cols => 32
-        = link_to "删除", "javascript:;", :style => "vertical-align:top;", :class => "remove-choice"        
+  .control
+    = f.label :answer, "答案"
+    = f.text_field :answer
 
-  %p= f.label :answer, "答案"
-  %p= f.text_field :answer
-
-  %p= f.submit "提交"
+  .control
+    = f.submit "提交"
