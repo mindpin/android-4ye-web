@@ -92,4 +92,36 @@ describe Api::KnowledgeNetsController do
       }
     }
   end
+
+  context '#knowledge_nets concepts' do
+    before {
+      @net_id = 'test1'
+      @net = KnowledgeNetAdapter.find(@net_id)
+      @node_adapter_31 = @net.find_node_adapter_by_id("node-31")
+      @node_adapter_32 = @net.find_node_adapter_by_id("node-32")
+      @node_adapter_33 = @net.find_node_adapter_by_id("node-33")
+
+      @node_31_concept = FactoryGirl.create :concept, {
+        :knowledge_node_id => @node_adapter_31.node.id,
+        :knowledge_net_id => @net_id
+      }
+      @node_32_concept = FactoryGirl.create :concept, {
+        :knowledge_node_id => @node_adapter_32.node.id,
+        :knowledge_net_id => @net_id
+      }
+      @node_33_concept = FactoryGirl.create :concept, {
+        :knowledge_node_id => @node_adapter_33.node.id,
+        :knowledge_net_id => @net_id
+      }
+
+      @node_adapter_31.do_learn(@user)
+
+      get :concepts, :id => 'test1', :is_learned => true
+      @json = JSON::parse(response.body)
+    }
+
+    it{
+      @json.count.should == 1
+    }
+  end
 end

@@ -20,4 +20,8 @@ class KnowledgeNodeAdapter
     ids = @node.ancestor_ids + [@node.id]
     Concept.where(:knowledge_node_id.in => ids, :knowledge_net_id => @node.net.id)
   end
+
+  def concepts
+    Concept.where(:knowledge_node_id => @node.id, :knowledge_net_id => @node.net.id)
+  end
 end

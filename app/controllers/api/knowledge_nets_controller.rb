@@ -26,4 +26,13 @@ class Api::KnowledgeNetsController < ApplicationController
   def random_questions
     render :json => Question.random_questions_for_node_id(params[:net_id], params[:id], 13).map {|question| question.as_json}
   end
+
+  def concepts
+    net_id = params[:id]
+    is_learned = params[:is_learned]
+    is_unlocked = params[:is_unlocked]
+    concepts = current_user.query_concepts(net_id, is_learned, is_unlocked)
+    result = concepts.map{|concept| concept.to_hash(current_user)}
+    render :json => result
+  end
 end

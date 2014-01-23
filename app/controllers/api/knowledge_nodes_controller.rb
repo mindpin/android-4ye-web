@@ -21,4 +21,9 @@ class Api::KnowledgeNodesController < ApplicationController
                     }
   end
 
+  def concepts
+    result = @node.concepts.map{|concept| concept.to_hash(current_user)}
+    render :json => result
+  end
+
 end

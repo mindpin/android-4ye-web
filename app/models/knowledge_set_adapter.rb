@@ -52,4 +52,9 @@ class KnowledgeSetAdapter
   def learned_node_count(user)
     KnowledgeLearnedSetProxy.learned_node_count(@set, user)
   end
+
+  def concepts
+    ids = @set.nodes.map{|node|node.id}
+    Concept.where(:knowledge_node_id.in => ids, :knowledge_net_id => @set.net.id)
+  end
 end

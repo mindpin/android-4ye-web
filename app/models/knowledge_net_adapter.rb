@@ -10,6 +10,12 @@ class KnowledgeNetAdapter
     end
   end
 
+  def node_adapters
+    @net.nodes.map do |node|
+      KnowledgeNodeAdapter.new(node)
+    end
+  end
+
   def checkpoint_adapters
     @net.checkpoints.map do |checkpoint|
       KnowledgeCheckpointAdapter.new(checkpoint)

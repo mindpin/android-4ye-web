@@ -44,18 +44,29 @@ class KnowledgeLearned
       [day_4, day_3, day_2, day_1, day_0]
     end
 
-    def learned_knowledge_nodes(net_id)
+    def query_knowledge_nodes(net_id, is_learned, is_unlocked)
       net_adapter = KnowledgeNetAdapter.find(net_id)
 
-      learned_set = net_adapter.set_adapters.select do |set_adapter|
-        set_adapter.is_unlocked?(self)
+      net_adapter.node_adapters.select do |node_adapter|
+        _query_knowledge_nodes_select(node_adapter, is_learned, is_unlocked)
       end
-      
-      learned_set.map do |set_adapter|
-        set_adapter.node_adapters
-      end.flatten.select do |node_adapter|
-        node_adapter.is_learned?(self)
+    end
+
+    def query_knowledge_node_ids(net_id, is_learned, is_unlocked)
+      query_knowledge_nodes(net_id, is_learned, is_unlocked).map do |node_adapter|
+        node_adapter.node.id
       end
+    end
+
+    def _query_knowledge_nodes_select(node_adapter, is_learned, is_unlocked)
+      learned_select = is_learned.nil? ? true : node_adapter.is_learned?(self) == is_learned
+      unlocked_select = is_unlocked.nil? ? true : node_adapter.is_unlocked?(self) == is_unlocked
+
+      learned_select && unlocked_select
+    end
+
+    def learned_knowledge_nodes(net_id)
+      query_knowledge_nodes(net_id, true, true)
     end
 
     def learned_knowledge_node_ids(net_id)
@@ -65,18 +76,7 @@ class KnowledgeLearned
     end
 
     def can_learn_knowledge_nodes(net_id)
-      net_adapter = KnowledgeNetAdapter.find(net_id)
-
-      can_learn_set = net_adapter.set_adapters.select do |set_adapter|
-        !set_adapter.is_learned?(self) && set_adapter.is_unlocked?(self)
-      end
-
-      can_learn_set.map do |set_adapter|
-        set_adapter.node_adapters
-      end.flatten.select do |node_adapter|
-        !node_adapter.is_learned?(self) && node_adapter.is_unlocked?(self)
-      end
-
+      query_knowledge_nodes(net_id, false, true)
     end
 
     def can_learn_knowledge_node_ids(net_id)
@@ -84,8 +84,16 @@ class KnowledgeLearned
         node_adapter.node.id
       end
     end
+
+    def locked_knowledge_nodes(net_id)
+      query_knowledge_nodes(net_id, false, false)
+    end
+
+    def locked_knowledge_node_ids(net_id)
+      locked_knowledge_nodes(net_id).map do |node_adapter|
+        node_adapter.node.id
+      end
+    end
+
   end
-
-
-
 end

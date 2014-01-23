@@ -32,6 +32,24 @@ class Concept
     where(:knowledge_node_id.in => node_ids, :knowledge_net_id => net_id)
   end
 
+  def knowledge_net_adapter
+    KnowledgeNetAdapter.find(knowledge_net_id)
+  end
+
+  def knowledge_node_adapter
+    knowledge_net_adapter.find_node_adapter_by_id(knowledge_node_id)
+  end
+    
+  def to_hash(user)
+    {
+      :name => self.name,
+      :desc => self.desc,
+      :is_learned => knowledge_node_adapter.is_learned?(user),
+      :is_unlocked => knowledge_node_adapter.is_unlocked?(user),
+      :practicing_count => ConceptTestRecord.init_by(user, self).total_tests
+    }
+  end
+
   module UserMethods
     def learned_concepts(net_id)
       node_ids = self.learned_knowledge_node_ids(net_id)
@@ -40,6 +58,16 @@ class Concept
 
     def can_learn_concepts(net_id)
       node_ids = self.can_learn_knowledge_node_ids(net_id)
+      Concept.concepts_from(net_id, node_ids)
+    end
+
+    def locked_concepts(net_id)
+      node_ids = self.locked_knowledge_node_ids(net_id)
+      Concept.concepts_from(net_id, node_ids)
+    end
+
+    def query_concepts(net_id, is_learned, is_unlocked)
+      node_ids = self.query_knowledge_node_ids(net_id, is_learned, is_unlocked)
       Concept.concepts_from(net_id, node_ids)
     end
 
