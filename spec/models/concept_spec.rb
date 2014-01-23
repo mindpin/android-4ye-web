@@ -48,6 +48,8 @@ describe Concept do
     }
 
     it {
+      @node_adapter_31.concepts.should == [@node_31_concept]
+
       @user.learned_concepts(@net_id).should =~ []
       @user.can_learn_concepts(@net_id).should =~ [@node_31_concept]
       @user.locked_concepts(@net_id).should =~ [@node_32_concept, @node_33_concept]

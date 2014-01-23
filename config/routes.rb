@@ -26,6 +26,7 @@ Android4yeWeb::Application.routes.draw do
       resources :knowledge_nodes do
         member do
           get :test_success
+          get :concepts 
         end
       end
       
