@@ -4,11 +4,21 @@ describe Api::KnowledgeSetsController do
   before{
     @user = FactoryGirl.create :user
     sign_in @user
+
+    @net_id = "test1"
+    @net = KnowledgeNetAdapter.find(@net_id)
+
+    @set_id = 'set-8'
+
+    @set_adapter = @net.find_set_adapter_by_id(@set_id)
+    @node_31_adapter = @net.find_node_adapter_by_id("node-31")
+    @node_32_adapter = @net.find_node_adapter_by_id("node-32")
+    @node_1_adapter = @net.find_node_adapter_by_id("node-1")
   }
 
   context '#knowledge_sets show' do
     before{
-      get :show, {:knowledge_net_id => 'test1', :id => 'set-8'} 
+      get :show, {:knowledge_net_id => @net_id, :id => @set_id} 
       @json = JSON::parse(response.body)
     }
 
@@ -36,6 +46,30 @@ describe Api::KnowledgeSetsController do
         ]
       }
 
+    }
+  end
+
+  context '#concepts' do
+    before{
+      @node_31_concept = FactoryGirl.create :concept, {
+        :knowledge_node_id => @node_31_adapter.node.id,
+        :knowledge_net_id => @net_id
+      }
+      @node_32_concept = FactoryGirl.create :concept, {
+        :knowledge_node_id => @node_32_adapter.node.id,
+        :knowledge_net_id => @net_id
+      }
+      @node_1_concept = FactoryGirl.create :concept, {
+        :knowledge_node_id => @node_1_adapter.node.id,
+        :knowledge_net_id => @net_id
+      }
+
+      get :concepts, :knowledge_net_id => @net_id, :id => 'set-8'
+      @json = JSON::parse(response.body)
+    }
+
+    it{
+      @json.count.should == 2
     }
   end
 

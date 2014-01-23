@@ -22,7 +22,11 @@ Android4yeWeb::Application.routes.draw do
         get :list
       end
 
-      resources :knowledge_sets
+      resources :knowledge_sets do
+        member do
+          get :concepts
+        end
+      end
       resources :knowledge_nodes do
         member do
           get :test_success
