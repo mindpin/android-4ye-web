@@ -11,7 +11,7 @@ class Concept
   has_many :concept_test_records
 
   def test_count(user)
-    record = ConceptTestRecord.where(:user_id => user.id, :concept_id => self.id).first
+    record = ConceptTestRecord.get_by(user, self).first
     record ? record.total_tests : 0
   end
 

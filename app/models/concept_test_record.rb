@@ -10,8 +10,12 @@ class ConceptTestRecord
 
   validates :concept_id, :uniqueness => {:scope => [:user_id]} 
 
+  def self.get_by(user, concept)
+    where(:user_id => user.id, :concept_id => concept.id)
+  end
+
   def self.init_by(user, concept)
-    relation = self.where(:user_id => user.id, :concept_id => concept.id)
+    relation = self.get_by(user, concept)
     relation.first ? relation.first : relation.create
   end
 
