@@ -12,17 +12,15 @@ class Concept
 
   def test_count(user)
     record = ConceptTestRecord.where(:user_id => user.id, :concept_id => self.id).first
-    record ? 0 : record
+    record ? record.total_tests : 0
   end
 
   def do_correct(user)
-    record = ConceptTestRecord.init_by(user, self)
-    record.do_correct!
+    ConceptTestRecord.init_by(user, self).do_correct!
   end
   
   def do_error(user)
-    record = ConceptTestRecord.init_by(user, self)
-    record.do_error!
+    ConceptTestRecord.init_by(user, self).do_error!
   end
 
   def learned_node_questions(user)
