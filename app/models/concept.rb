@@ -6,14 +6,15 @@ class Concept
   field :desc, :type => String
   field :knowledge_node_id, :type => String
   field :knowledge_net_id, :type => String
-  field :id, :type => String
-  before_create :generate_concept_id
-  def generate_concept_id
-    self.id = randstr
-  end
+  field :_bid, :type => String
 
   has_and_belongs_to_many :questions
   has_many :concept_test_records
+
+  before_create :set_bid
+  def set_bid
+    self._bid = randstr
+  end
 
   def test_count(user)
     record = ConceptTestRecord.get_by(user, self).first
