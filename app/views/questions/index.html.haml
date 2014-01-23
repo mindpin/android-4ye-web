@@ -1,6 +1,6 @@
 .page-question-nets
-  %h1 知识领域列表
-  .nav{:style => "background:#A1C9F6;padding:4px 8px;width:640px;"}
+  %h1.title 知识领域列表
+  .nav
     = link_to "首页", questions_path, :class => "current"
   - @nets.each do |net|
     .knowledge-net

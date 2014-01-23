@@ -1,12 +1,17 @@
 .page-question-set
-  %h1 #{@set.name} - 知识节点列表
+  %h1.title #{@set.name} - 知识节点列表
   .nav
     = link_to "首页", questions_path
     >
     = link_to @net.name, net_questions_path(:id => "javascript")
     >
     = link_to @set.name, set_questions_path(:id => @set.id, :net_id => @net.id), :class => "current"
-  - @set.nodes.each do |node|
-    .knowledge-node
-      = link_to node.name, node_questions_path(:id => node.id, :net_id => @net.id)
-      = link_to "相关概念管理", concepts_questions_path(:id => node.id, :net_id => @net.id)
+  .items.nodes
+    - @set.nodes.each do |node|
+      .item
+        .title
+          = node.name
+          .ops
+            - open = link_to "打开", node_questions_path(:id => node.id, :net_id => @net.id)
+            - concept = link_to "相关概念管理", concepts_questions_path(:id => node.id, :net_id => @net.id)
+            = open + concept
