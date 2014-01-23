@@ -15,7 +15,7 @@
           = concept.name 
           .ops
             - edit = link_to "编辑", edit_concept_questions_path(:id => concept.id)
-            - delete = link_to "删除", destroy_concept_questions_path(:id => concept.id)
+            - delete = link_to "删除", destroy_concept_questions_path(:id => concept.id), :method => :delete, :confirm => "确定删除?"
             = edit + delete
         .desc= concept.desc
 
