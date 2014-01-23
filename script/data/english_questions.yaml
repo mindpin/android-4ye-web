@@ -1,327 +1,177 @@
----
-- knowledge_node_id: node-101
-  kind: fill
-  content: |
-    ![file:///android_asset/questions/node_101/rice.png]
-    与图片相对应的单词是？[%]
-  choices:
-  - noodle
-  - rice
-  - soup
-  - cheese
-  answer: rice
-- knowledge_node_id: node-101
-  kind: fill
-  content: |
-    ![file:///android_asset/questions/node_101/bread.png]
-    与图片相对应的单词是？[%]
-  choices:
-  - noodle
-  - sandwich
-  - bread
-  - pizza
-  answer: bread
-- knowledge_node_id: node-101
-  kind: fill
-  content: |
-    ![file:///android_asset/questions/node_101/noodles.png]
-    与图片相对应的单词是？[%]
-  choices:
-  - noodles
-  - pancake
-  - porridge
-  answer: noodles
-- knowledge_node_id: node-101
-  kind: fill
-  content: |
-    ![file:///android_asset/questions/node_101/porridge.png]
-    与图片相对应的单词是？[%]
-  choices:
-  - noodles
-  - porridge
-  - dumplings
-  - bread
-  answer: porridge
-- knowledge_node_id: node-101
-  kind: fill
-  content: |
-    ![file:///android_asset/questions/node_101/dumplings.png]
-    与图片相对应的单词是？[%]
-  choices:
-  - dumplings
-  - sandwich
-  - pancake
-  answer: dumplings
-- knowledge_node_id: node-101
-  kind: fill
-  content: |
-    ![file:///android_asset/questions/node_101/soup.png]
-    与图片相对应的单词是？[%]
-  choices:
-  - porridge
-  - noodles
-  - soup
-  answer: soup
-- knowledge_node_id: node-101
-  kind: fill
-  content: |
-    ![file:///android_asset/questions/node_101/salad.png]
-    与图片相对应的单词是？[%]
-  choices:
-  - pizza
-  - salad
-  - pancake
-  answer: salad
-- knowledge_node_id: node-101
-  kind: fill
-  content: |
-    ![file:///android_asset/questions/node_101/pizza.png]
-    与图片相对应的单词是？[%]
-  choices:
-  - porridge
-  - pancake
-  - rice
-  - pizza
-  answer: pizza
-- knowledge_node_id: node-101
+- knowledge_node_id: "node-200"
   kind: single_choice
-  content: |
-    ![file:///android_asset/questions/node_101/sandwich.png]
-    图中物品所表示的单词怎么拼写？
+  content: 以下选项中哪个表示 mother ?
   choices:
-  - hamburger
-  - cheese
-  - sandwich
-  - rice
-  answer: C
-- knowledge_node_id: node-101
+    - |
+      ![file:///images/mother.jpg]
+    - |
+      ![file:///images/father.jpg]
+    - |
+      ![file:///images/grandfather.jpg]
+  answer: |
+      ![file:///images/mother.jpg]
+  concepts:
+    - node-200-0
+    - node-200-1
+    - node-200-3
+
+- knowledge_node_id: "node-200"
   kind: single_choice
-  content: |
-    ![file:///android_asset/questions/node_101/hamburger.png]
-    图中物品所表示的单词怎么拼写？
+  content: 以下选项中哪个表示 grandmother ?
   choices:
-  - cheese
-  - noodles
-  - dumplings
-  - hamburger
-  answer: D
-- knowledge_node_id: node-101
+    - |
+      ![file:///images/father.jpg]
+    - |
+      ![file:///images/grandmother.jpg]
+    - |
+      ![file:///images/mother.jpg]
+  answer: |
+      ![file:///images/grandmother.jpg]
+  concepts:
+    - node-200-1
+    - node-200-2
+    - node-200-0
+    
+- knowledge_node_id: "node-200"
   kind: single_choice
-  content: |
-    ![file:///android_asset/questions/node_101/cheese.png]
-    图中物品所表示的单词怎么拼写？
+  content: | 
+    ![file:///images/father.jpg] 
+    以下选项中最能描述图片内容的是 ?
   choices:
-  - bread
-  - cheese
-  - pancake
-  - rice
-  answer: B
-- knowledge_node_id: node-101
+    - father
+    - mother
+    - grandmother
+  answer: father
+  concepts:
+    - node-200-1
+    - node-200-0
+    - node-200-2
+
+- knowledge_node_id: "node-200"
   kind: single_choice
-  content: |
-    ![file:///android_asset/questions/node_101/pancake.png]
-    图中物品所表示的单词怎么拼写？
+  content: | 
+    ![file:///images/mother.jpg] 
+    以下选项中最能描述图片内容的是 ?
   choices:
-  - pancake
-  - bread
-  - soup
-  - salad
-  answer: A
-- knowledge_node_id: node-102
-  kind: single_choice
-  content: |
-    ![file:///android_asset/questions/node_102/pork.png]
-    图中物品所表示的单词怎么拼写？
-  choices:
-  - steak
-  - pork
-  - duck
-  - sausage
-  answer: B
-- knowledge_node_id: node-102
-  kind: single_choice
-  content: |
-    ![file:///android_asset/questions/node_102/steak.png]
-    图中物品所表示的单词怎么拼写？
-  choices:
-  - chops
-  - chicken
-  - steak
-  answer: C
-- knowledge_node_id: node-102
-  kind: single_choice
-  content: |
-    ![file:///android_asset/questions/node_102/chops.png]
-    图中物品所表示的单词怎么拼写？
-  choices:
-  - beef
-  - meatballs
-  - duck
-  - chops
-  answer: D
-- knowledge_node_id: node-102
-  kind: single_choice
-  content: |
-    ![file:///android_asset/questions/node_102/chicken.png]
-    图中物品所表示的单词怎么拼写？
-  choices:
-  - steak
-  - chicken
-  - sausage
-  - fish
-  answer: B
-- knowledge_node_id: node-102
-  kind: single_choice
-  content: |
-    ![file:///android_asset/questions/node_102/beef.png]
-    图中物品所表示的单词怎么拼写？
-  choices:
-  - steak
-  - chicken
-  - beef
-  - fish
-  answer: C
-- knowledge_node_id: node-102
-  kind: single_choice
-  content: |
-    ![file:///android_asset/questions/node_102/duck.png]
-    图中物品所表示的单词怎么拼写？
-  choices:
-  - meatballs
-  - egg
-  - pork
-  - duck
-  answer: D
-- knowledge_node_id: node-102
-  kind: single_choice
-  content: |
-    ![file:///android_asset/questions/node_102/fish.png]
-    图中物品所表示的单词怎么拼写？
-  choices:
-  - steak
-  - sausage
-  - fish
-  - duck
-  answer: C
-- knowledge_node_id: node-102
-  kind: single_choice
-  content: |
-    ![file:///android_asset/questions/node_102/mutton.png]
-    图中物品所表示的单词怎么拼写？
-  choices:
-  - mutton
-  - beef
-  - fish
-  - pork
-  answer: A
-- knowledge_node_id: node-102
-  kind: single_choice
-  content: |
-    ![file:///android_asset/questions/node_102/egg.png]
-    图中物品所表示的单词怎么拼写？
-  choices:
-  - chops
-  - pork
-  - steak
-  - egg
-  answer: D
-- knowledge_node_id: node-102
-  kind: single_choice
-  content: |
-    ![file:///android_asset/questions/node_102/meatballs.png]
-    图中物品所表示的单词怎么拼写？
-  choices:
-  - meatballs
-  - sausage
-  - egg
-  - chicken
-  answer: A
-- knowledge_node_id: node-102
-  kind: single_choice
-  content: |
-    ![file:///android_asset/questions/node_102/shrimp.png]
-    图中物品所表示的单词怎么拼写？
-  choices:
-  - egg
-  - sausage
-  - fish
-  - shrimp
-  answer: D
-- knowledge_node_id: node-102
+    - father
+    - grandfather
+    - mother
+  answer: mother
+  concepts:
+    - node-200-1
+    - node-200-3
+    - node-200-0
+
+- knowledge_node_id: "node-200"
   kind: true_false
-  content: |
-    ![file:///android_asset/questions/node_102/sausage.png]
-    图示在英语里写作 chicken
+  content: | 
+    ![file:///images/father.jpg] 
+    图片中出现了 mother
   answer: F
-- knowledge_node_id: node-103
+  concepts:
+    - node-200-1
+    - node-200-0
+
+- knowledge_node_id: "node-200"
   kind: true_false
-  content: |
-    ![file:///android_asset/questions/node_103/cake.png]
-    图示在英语里写作 cake
+  content: | 
+    ![file:///images/grandparents.jpg] 
+    图片中出现了 grandfather
   answer: T
-- knowledge_node_id: node-103
-  kind: true_false
-  content: |
-    ![file:///android_asset/questions/node_103/icecream.png]
-    图示在英语里写作 pudding
-  answer: F
-- knowledge_node_id: node-103
-  kind: true_false
-  content: |
-    ![file:///android_asset/questions/node_103/cookies.png]
-    图示在英语里写作 chips
-  answer: F
-- knowledge_node_id: node-103
-  kind: true_false
-  content: |
-    ![file:///android_asset/questions/node_103/coke.png]
-    图示在英语里写作 coke
-  answer: T
-- knowledge_node_id: node-103
-  kind: true_false
-  content: |
-    ![file:///android_asset/questions/node_103/biscuit.png]
-    图示在英语里写作 biscuit
-  answer: T
-- knowledge_node_id: node-103
-  kind: true_false
-  content: |
-    ![file:///android_asset/questions/node_103/pudding.png]
-    图示在英语里写作 pudding
-  answer: T
-- knowledge_node_id: node-103
-  kind: true_false
-  content: |
-    ![file:///android_asset/questions/node_103/chips.png]
-    图示在英语里写作 biscuit
-  answer: F
-- knowledge_node_id: node-103
-  kind: true_false
-  content: |
-    ![file:///android_asset/questions/node_103/beer.png]
-    图示在英语里写作 beer
-  answer: T
-- knowledge_node_id: node-103
-  kind: true_false
-  content: |
-    ![file:///android_asset/questions/node_103/wine.png]
-    图示在英语里写作 milk
-  answer: F
-- knowledge_node_id: node-103
-  kind: true_false
-  content: |
-    ![file:///android_asset/questions/node_103/coffee.png]
-    图示在英语里写作 milk
-  answer: F
-- knowledge_node_id: node-103
-  kind: true_false
-  content: |
-    ![file:///android_asset/questions/node_103/tea.png]
-    图示在英语里写作 tea
-  answer: T
-- knowledge_node_id: node-103
-  kind: true_false
-  content: |
-    ![file:///android_asset/questions/node_103/milk.png]
-    图示在英语里写作 milk
-  answer: T
+  concepts:
+    - node-200-2
+    - node-200-3
+    
+- knowledge_node_id: "node-200"
+  kind: single_choice
+  content: 以下选项中哪个表示 grandfather 
+  choices:
+    - |
+      ![file:///images/mother.jpg]
+    - |
+      ![file:///images/grandfather.jpg]
+    - |
+      ![file:///images/grandmother.jpg]
+  answer: |
+      ![file:///images/grandfather.jpg]
+  concepts:
+    - node-200-0
+    - node-200-2
+    - node-200-3
+
+- knowledge_node_id: "node-200"
+  kind: single_choice
+  content: 以下选项中哪个表示 father
+  choices:
+    - |
+      ![file:///images/father.jpg]
+    - |
+      ![file:///images/grandmother.jpg]
+    - |
+      ![file:///images/mother.jpg]
+  answer: |
+      ![file:///images/father.jpg]
+  concepts:
+    - node-200-1
+    - node-200-2
+    - node-200-0
+    
+- knowledge_node_id: "node-200"
+  kind: single_choice
+  content: | 
+    ![file:///images/grandfather.jpg] 
+    以下选项中最能描述图片内容的是 ?
+  choices:
+    - father
+    - mother
+    - grandfather
+  answer: grandfather
+  concepts:
+    - node-200-1
+    - node-200-0
+    - node-200-3
+
+- knowledge_node_id: "node-200"
+  kind: single_choice
+  content: | 
+    ![file:///images/grandmother.jpg] 
+    以下选项中最能描述图片内容的是 ?
+  choices:
+    - grandfather
+    - mother
+    - grandmother
+  answer: grandmother
+  concepts:
+    - node-200-3
+    - node-200-0
+    - node-200-2
+
+- knowledge_node_id: "node-200"
+  kind: fill
+  content: | 
+    ![file:///images/grandparents.jpg] 
+    图片中的人物从左到右分别是 [%] 和 [%] ?
+  choices:
+    - grandmother
+    - grandfather
+    - mother
+  answer: "grandfather,grandmother"
+  concepts:
+    - node-200-2
+    - node-200-3
+    - node-200-0
+
+- knowledge_node_id: "node-200"
+  kind: single_choice
+  content: | 
+    ![file:///images/parents.jpg] 
+    图片中的人物从左到右分别是 [%] 和 [%] ?
+  choices:
+    - father
+    - grandfather
+    - mother
+  answer: "father,mother"
+  concepts:
+    - node-200-1
+    - node-200-3
+    - node-200-0
