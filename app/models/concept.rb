@@ -48,7 +48,7 @@ class Concept
     
   def to_hash(user)
     {
-      :id   => self.id,
+      :id   => self._bid,
       :name => self.name,
       :desc => self.desc,
       :is_learned => knowledge_node_adapter.is_learned?(user),
