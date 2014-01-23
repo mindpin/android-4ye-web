@@ -16,6 +16,11 @@ h1.title {font-size:24px;padding:0 16px;border-left:1px #000 solid;color:#444;}
 
 .form {color:#666;}
 .form .control {border-left:1px solid #000;width:640px;margin-bottom:16px;}
-.form label {display:block;background:#9CE6BB;margin:0;padding:4px 16px;}
-.form input, .form textarea {display:block;margin:0;width:608px;padding:8px 16px;border:0;background:#fafafa;font-size:14px;}
+.form .control > label {display:block;background:#9CE6BB;margin:0;padding:4px 16px;}
+.form input, .form textarea, .form select, .form .widgets {display:block;margin:0;width:608px;padding:8px 16px;border:0;background:#fafafa;font-size:14px;}
+.form select {width:640px;}
 .form input[type=submit] {width:640px;background:#9CE6BB;}
+.form .widget {margin-bottom:8px;}
+.form .widget input {display:inline-block;width:16px;width:16px;}
+
+.new {display:block;border-left:1px solid #000;padding:4px 16px 4px 16px;color:#666;background:#9CE6BB;width:607px;text-decoration:none;text-align:center;margin-bottom:16px;}

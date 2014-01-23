@@ -3,17 +3,18 @@
   .nav
     = link_to "首页", questions_path
     >
-    = link_to @net.name, net_questions_path(:id => "javascript")
+    = link_to @net.name, net_questions_path(:id => @net.id)
     >
     = link_to @node.set.name, set_questions_path(:id => @node.set.id, :net_id => @net.id)
     >
     = link_to @node.name, node_questions_path(:id => @node.id, :net_id => @net.id), :class => "current"
-  .ops
-    = link_to "新建", new_question_path(:node_id => @node.id, :net_id => @net.id)
-  .question-list
+  = link_to "新建", new_question_path(:node_id => @node.id, :net_id => @net.id), :class => "new"
+  .question-list.items
     - @questions.each do |question|
-      .question
-        .content= question.content
-        .ops
-          = link_to "编辑", edit_question_path(question)
-          = link_to "删除", question_path(question), :method => :delete, :confirm => "确认删除?"
+      .item.question
+        .title
+          = question.content
+          .ops
+            - edit = link_to "编辑", edit_question_path(question)
+            - remove = link_to "删除", question_path(question), :method => :delete, :confirm => "确认删除?"
+            = edit + remove

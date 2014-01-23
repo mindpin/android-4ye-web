@@ -3,7 +3,7 @@
   .nav
     = link_to "首页", questions_path
     >
-    = link_to @net.name, net_questions_path(:id => "javascript")
+    = link_to @net.name, net_questions_path(:id => @net.id)
     >
     = link_to @set.name, set_questions_path(:id => @set.id, :net_id => @net.id), :class => "current"
   .items.nodes

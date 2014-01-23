@@ -4,21 +4,26 @@
 = form_for @question do |f|
   = f.hidden_field :knowledge_net_id
 
-  %p= f.label :knowledge_node_id, "知识点"
-  - opts = @node.set.nodes.map {|node| [node.name, node.id]}
-  %p= f.select :knowledge_node_id, options_for_select(opts, [@node.name, @node.id])
+  .control
+    = f.label :knowledge_node_id, "知识点"
+    - opts = @node.set.nodes.map {|node| [node.name, node.id]}
+    = f.select :knowledge_node_id, options_for_select(opts, [@node.name, @node.id])
 
-  %p= f.label :concepts, "相关概念"
-  - KnowledgeNodeAdapter.new(@node).available_concepts.each do |concept|
-    = label_tag do
-      = concept.name
-      - checked = @question.concepts.include?(concept)
-      = check_box_tag "question[concept_ids][]", concept.id, checked
+  .control
+    = f.label :concepts, "相关概念"
+    .widgets
+      - KnowledgeNodeAdapter.new(@node).available_concepts.each do |concept|
+        .widget
+          = label_tag do
+            - checked = @question.concepts.include?(concept)
+            = check_box_tag "question[concept_ids][]", concept.id, checked
+            = concept.name
 
-  %p= f.label :content_type, "内容录入语法"
-  - format = @question.content_type ? Question.formats.select {|x| @question.content_type == x[1]}[0] : Question.formats[0]
-  - format_options = options_for_select(Question.formats, format)
-  %p= f.select :content_type, format_options
+  .control
+    = f.label :content_type, "内容录入语法"
+    - format = @question.content_type ? Question.formats.select {|x| @question.content_type == x[1]}[0] : Question.formats[0]
+    - format_options = options_for_select(Question.formats, format)
+    = f.select :content_type, format_options
 
   %p= f.label :kind, "问题类型"
   - kind_options = Question.kinds
