@@ -1,4 +1,4 @@
-class Admin::QuestionsController < ApplicationController
+class Admin::QuestionsController < Admin::ApplicationController
   before_filter :is_admin
   def is_admin
     if !current_user.is_admin?
