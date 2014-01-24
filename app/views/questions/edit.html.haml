@@ -1,7 +1,14 @@
 .page-question-form.edit
-  .header
-    %h1 编辑测试题
-    .ops
-      = link_to "返回", node_questions_path(:id => @question.knowledge_node_id, :net_id => @question.knowledge_net_id)
+  %h1 编辑测试题
+  .nav
+    = link_to "首页", questions_path
+    >
+    = link_to @net.name, net_questions_path(:id => "javascript")
+    >
+    = link_to @node.set.name, set_questions_path(:id => @node.set.id, :net_id => @net.id)
+    >
+    = link_to @node.name, node_questions_path(:id => @node.id, :net_id => @net.id)
+    >
+    = link_to "编辑测试题", edit_question_path(:id => @question.id), :class => "current"
   .question-form
     = render "form"

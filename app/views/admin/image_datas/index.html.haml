@@ -5,6 +5,8 @@
 
   .image-data-list
     %h1 图片列表
-    - ImageData.all.each do |image_data|
-      .image-data
+    - ImageData.all.reverse.each do |image_data|
+      .image-data{:style=>"margin:80px;"}
         = image_tag image_data.file.url
+        .url= image_data.file.url
+        .origin_name= "原始名 : #{image_data.origin_file_name}"

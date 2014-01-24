@@ -1,7 +1,11 @@
 .page-question-set
   %h1 #{@set.name} - 知识节点列表
-  .ops
-    = link_to "返回上一级", net_questions_path(:id => @net.id)
+  .nav
+    = link_to "首页", questions_path
+    >
+    = link_to @net.name, net_questions_path(:id => "javascript")
+    >
+    = link_to @set.name, set_questions_path(:id => @set.id, :net_id => @net.id), :class => "current"
   - @set.nodes.each do |node|
     .knowledge-node
       = link_to node.name, node_questions_path(:id => node.id, :net_id => @net.id)

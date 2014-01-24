@@ -34,6 +34,8 @@ class QuestionsController < ApplicationController
 
   def edit_concept
     @concept = Concept.find(params[:id])
+    @net = KnowledgeSpaceNetLib::KnowledgeNet.find(@concept.knowledge_net_id)
+    @node = @net.find_node_by_id(@concept.knowledge_node_id)
     @update_url = update_concept_questions_path(:id => @concept.id)
   end
   

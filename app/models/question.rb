@@ -72,6 +72,16 @@ class Question
     StandardQuestionContentParser.new(content).output
   end
 
+  def make_choices
+    choices.map do |choice|
+      if MARKDOWN_FORMAT == content_type
+        MarkdownQuestionContentParser.new(choice).parse 
+      else
+        StandardQuestionContentParser.new(choice).output
+      end
+    end
+  end
+  
   def as_json(options={})
     json = super(options.merge :except => [:_id])
     json[:content] = make_content
