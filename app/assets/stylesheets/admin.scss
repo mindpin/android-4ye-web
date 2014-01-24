@@ -33,3 +33,13 @@ body{
     display:block;
   }
 }
+
+.page-image-datas{
+  .image{
+    width:300px;
+    overflow:hidden;
+    img{
+      max-width: 300px;
+    }
+  }
+}

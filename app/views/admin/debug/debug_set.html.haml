@@ -1,8 +1,14 @@
-= link_to "返回", "/debug/knowledge_nets/#{@net.id}"
+.page-debug-net
+  .nav
+    = link_to "HTTP API DEBUG", "/admin/debug"
+    > 
+    = link_to "#{@net.name} 的知识单元列表", "/admin/debug/knowledge_nets/#{@net.id}/"
+    >
+    = "#{@set.name} 的知识节点列表"
 
-%h2 知识节点列表
-- @set.nodes.each do |node|
-  .item
-    = node.name
-    = link_to "/api/knowledge_nets/#{@net.id}/knowledge_nodes/#{node.id}/get_random_question","/api/knowledge_nets/#{@net.id}/knowledge_nodes/#{node.id}/get_random_question", :target => "_blank"
-    = link_to "/api/knowledge_nets/#{@net.id}/knowledge_nodes/#{node.id}/get_random_questions","/api/knowledge_nets/#{@net.id}/knowledge_nodes/#{node.id}/get_random_questions", :target => "_blank"
+  .list
+    - @set.nodes.each do |node|
+      .item
+        = node.name
+        = link_to "/api/knowledge_nets/#{@net.id}/knowledge_nodes/#{node.id}/get_random_question","/api/knowledge_nets/#{@net.id}/knowledge_nodes/#{node.id}/get_random_question", :target => "_blank"
+        = link_to "/api/knowledge_nets/#{@net.id}/knowledge_nodes/#{node.id}/get_random_questions","/api/knowledge_nets/#{@net.id}/knowledge_nodes/#{node.id}/get_random_questions", :target => "_blank"
