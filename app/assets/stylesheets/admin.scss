@@ -7,30 +7,44 @@ body{
   padding: 20px;
   background: white;
 }
-
+body{
+  margin-top:0;
+}
 .navbar{
   line-height: 1em;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
   a{
     text-decoration:none;
   }
   .item{
-    width: 120px;
-    padding: 0 60px;
-    display: inline-block;
-    &.current{
-      border-bottom:solid #ff0000;
+    float: left;
+    a{
+      width: 120px;
+      padding: 0 60px;
+      display: block;
+      border-bottom:solid #B8B8B8;
       background: #F0F0F0;
+      &:hover{
+        border-bottom:solid #ff0000;
+        background: #FFF0F0;
+      }
+    }
+    &.current{
+      a{
+        border-bottom:solid #ff0000;
+        background: #FFF0F0;
+      }
     }
   }
   .logout{
-    display: inline-block;
+    display: block;
     float: right;
     font-size: 13px;
   }
   &:after {
     content:"";
     display:block;
+    clear: both;
   }
 }
 
