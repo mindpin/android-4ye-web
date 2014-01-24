@@ -1,12 +1,13 @@
 .page-image-datas
+  .nav
+    图片维护
   .header
     .ops
-      = link_to "新建", "/image_datas/new"
+      = link_to "上传图片", "/admin/image_datas/new"
 
   .image-data-list
-    %h1 图片列表
     - ImageData.all.reverse.each do |image_data|
       .image-data{:style=>"margin:80px;"}
-        = image_tag image_data.file.url
+        .image= image_tag image_data.file.url
         .url= image_data.file.url
         .origin_name= "原始名 : #{image_data.origin_file_name}"

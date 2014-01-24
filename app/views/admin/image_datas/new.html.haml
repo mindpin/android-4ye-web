@@ -1,0 +1,12 @@
+.page-image-data-form.new
+  .nav
+    = link_to "图片维护", "/admin/image_datas"
+    > 上传图片
+
+  .form
+    = form_tag "/admin/image_datas", :method => :post, :multipart => true do
+      .field
+        = file_field_tag "file"
+      .field
+        = submit_tag "上传"
+    

@@ -1,7 +1,6 @@
 .page-image-data-show
-  .header
-    .ops
-      = link_to "返回", "/image_datas"
+  .nav
+    = link_to "图片维护", "/admin/image_datas"
   .show
     %h1
       = "图片地址是 :  #{@image_data.file.url}"

@@ -1,11 +1,4 @@
-class ImageDatasController < ApplicationController
-  before_filter :is_admin
-  def is_admin
-    if !current_user.is_admin?
-      render :status => 401, :text => 401
-    end
-  end
-
+class Admin::ImageDatasController < Admin::ApplicationController
   def index
   end
 
@@ -16,7 +9,7 @@ class ImageDatasController < ApplicationController
     image_data = ImageData.new(:file => params[:file])
     image_data.origin_file_name = params[:file].original_filename
     image_data.save
-    redirect_to "/image_datas/#{image_data.id}"
+    redirect_to "/admin/image_datas/#{image_data.id}"
   end
 
   def show

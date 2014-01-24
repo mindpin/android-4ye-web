@@ -1,0 +1,45 @@
+body{
+  background: #F6F4F0;
+}
+#page-body{
+  width: 960px;
+  margin: auto;
+  padding: 20px;
+  background: white;
+}
+
+.navbar{
+  line-height: 1em;
+  padding-bottom: 20px;
+  a{
+    text-decoration:none;
+  }
+  .item{
+    width: 120px;
+    padding: 0 60px;
+    display: inline-block;
+    &.current{
+      border-bottom:solid #ff0000;
+      background: #F0F0F0;
+    }
+  }
+  .logout{
+    display: inline-block;
+    float: right;
+    font-size: 13px;
+  }
+  &:after {
+    content:"";
+    display:block;
+  }
+}
+
+.page-image-datas{
+  .image{
+    width:300px;
+    overflow:hidden;
+    img{
+      max-width: 300px;
+    }
+  }
+}

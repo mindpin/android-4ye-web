@@ -1,0 +1,16 @@
+- item_question_clazz = ""
+- item_image_data_clazz = ""
+- item_debug_clazz = ""
+- case params[:controller]
+- when "admin/questions" then item_question_clazz = "current"
+- when "admin/image_datas" then item_image_data_clazz = "current"
+- when "admin/debug" then item_debug_clazz = "current"
+.navbar
+  .item{:class=>item_question_clazz}
+    = link_to "题库维护", "/questions"
+  .item{:class=>item_image_data_clazz}
+    = link_to "图片维护", "/admin/image_datas"
+  .item{:class=>item_debug_clazz}
+    = link_to "HTTP API DEBUG", "/admin/debug"
+  .logout
+    = link_to "退出登录", "/account/sign_out"
