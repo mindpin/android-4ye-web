@@ -1,20 +1,23 @@
 .page-question-set
-  %h1 #{@node.name} - 概念管理
+  %h1.title #{@node.name} - 概念管理
   .nav
     = link_to "首页", questions_path
     >
-    = link_to @net.name, net_questions_path(:id => "javascript")
+    = link_to @net.name, net_questions_path(:id => @net.id)
     >
     = link_to @node.set.name, set_questions_path(:id => @node.set.id, :net_id => @net.id)
     >
     = link_to "#{@node.name}-概念管理", concepts_questions_path(:id => @node.id, :net_id => @net.id), :class => "current"
-  .concepts
+  .items.concepts
     - @concepts.each do |concept|
-      .concept{:style => "border-bottom:1px solid #ccc;margin-bottom:4px;width:640px;"}
-        .title{:style => "background:#ddd;"}= concept.name 
+      .item
+        .title
+          = concept.name 
+          .ops
+            - edit = link_to "编辑", edit_concept_questions_path(:id => concept.id)
+            - delete = link_to "删除", destroy_concept_questions_path(:id => concept.id), :method => :delete, :confirm => "确定删除?"
+            = edit + delete
         .desc= concept.desc
-        = link_to "编辑", edit_concept_questions_path(:id => concept.id)
-        = link_to "删除", destroy_concept_questions_path(:id => concept.id), :method => :delete, :confirm => "确认删除?"
 
-  .new-concept
+  .new-concept.form
     = render "concept_form"

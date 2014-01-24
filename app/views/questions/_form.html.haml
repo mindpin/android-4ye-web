@@ -1,43 +1,53 @@
-%p.choice.template{:style => "display:none;"}
+.widget.choice.text-input.template{:style => "display:none;"}
   = text_area_tag "question[choices][]", nil, :rows => 2, :cols => 32
   = link_to "删除", "javascript:;", :style => "vertical-align:top;", :class => "remove-choice"
 = form_for @question do |f|
   = f.hidden_field :knowledge_net_id
 
-  %p= f.label :knowledge_node_id, "知识点"
-  - opts = @node.set.nodes.map {|node| [node.name, node.id]}
-  %p= f.select :knowledge_node_id, options_for_select(opts, [@node.name, @node.id])
+  .control
+    = f.label :knowledge_node_id, "知识点"
+    - opts = @node.set.nodes.map {|node| [node.name, node.id]}
+    = f.select :knowledge_node_id, options_for_select(opts, [@node.name, @node.id])
 
-  %p= f.label :concepts, "相关概念"
-  - KnowledgeNodeAdapter.new(@node).available_concepts.each do |concept|
-    = label_tag do
-      = concept.name
-      - checked = @question.concepts.include?(concept)
-      = check_box_tag "question[concept_ids][]", concept.id, checked
+  .control
+    = f.label :concepts, "相关概念"
+    .widgets
+      - KnowledgeNodeAdapter.new(@node).available_concepts.each do |concept|
+        .widget
+          = label_tag do
+            - checked = @question.concepts.include?(concept)
+            = check_box_tag "question[concept_ids][]", concept.id, checked
+            = concept.name
 
-  %p= f.label :content_type, "内容录入语法"
-  - format = @question.content_type ? Question.formats.select {|x| @question.content_type == x[1]}[0] : Question.formats[0]
-  - format_options = options_for_select(Question.formats, format)
-  %p= f.select :content_type, format_options
+  .control
+    = f.label :content_type, "内容录入语法"
+    - format = @question.content_type ? Question.formats.select {|x| @question.content_type == x[1]}[0] : Question.formats[0]
+    - format_options = options_for_select(Question.formats, format)
+    = f.select :content_type, format_options
 
-  %p= f.label :kind, "问题类型"
-  - kind_options = Question.kinds
-  %p= f.select :kind, Question.kinds, :include_blank => true
+  .control
+    = f.label :kind, "问题类型"
+    - kind_options = Question.kinds
+    = f.select :kind, Question.kinds, :include_blank => true
 
-  %p= f.label :content, "内容"
-  %p= f.text_area :content, :rows => 20, :cols => 64
+  .control
+    = f.label :content, "内容"
+    = f.text_area :content, :rows => 20, :cols => 64
 
-  %p
+  .control
     = f.label :choices, "选项"
-    = link_to "添加", "javascript:;", :class => "add-choice"
+    .ops
+      = link_to "添加", "javascript:;", :class => "add-choice"
+    .widgets{:style => @question.choices ? "" : "display:none;"}
+      - if @question.choices
+        - @question.choices.each do |choice|
+          .widget.choice.text-input
+            = text_area_tag "question[choices][]", choice, :rows => 2, :cols => 32
+            = link_to "删除", "javascript:;", :style => "vertical-align:top;", :class => "remove-choice"        
 
-  - if @question.choices
-    - @question.choices.each do |choice|
-      %p.choice
-        = text_area_tag "question[choices][]", choice, :rows => 2, :cols => 32
-        = link_to "删除", "javascript:;", :style => "vertical-align:top;", :class => "remove-choice"        
+  .control
+    = f.label :answer, "答案"
+    = f.text_field :answer
 
-  %p= f.label :answer, "答案"
-  %p= f.text_field :answer
-
-  %p= f.submit "提交"
+  .control
+    = f.submit "提交"

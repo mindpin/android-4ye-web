@@ -1,9 +1,13 @@
 .page-question-net
-  %h1 #{@net.name} - 知识单元列表
+  %h1.title #{@net.name} - 知识单元列表
   .nav
     = link_to "首页", questions_path
     >
-    = link_to @net.name, net_questions_path(:id => "javascript"), :class => "current"
-  - @net.sets.each do |set|
-    .knowledge-set
-      = link_to set.name, set_questions_path(:id => set.id, :net_id => @net.id)
+    = link_to @net.name, net_questions_path(:id => @net.id), :class => "current"
+  .items
+    - @net.sets.each do |set|
+      .knowledge-set.item
+        .title
+          = set.name
+          .ops
+            = link_to "打开", set_questions_path(:id => set.id, :net_id => @net.id)

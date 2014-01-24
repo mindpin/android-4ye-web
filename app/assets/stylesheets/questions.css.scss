@@ -1,4 +1,31 @@
-.nav {border-radius:3px;background:#A1C9F6;padding:4px 8px;width:640px;margin-bottom:16px;}
-.nav a {color:#444;padding:2px 8px;text-decoration:none;margin:2px;}
-.nav a.current {background:blue;color:white;border-radius:3px;}
-.nav a:hover {background:#ddd;color:#aaa;border-radius:3px;}
+h1.title {font-size:24px;padding:0 16px;border-left:1px #000 solid;color:#444;}
+
+.nav {border-left:1px #000 solid;background:#A1C9F6;padding:4px 8px;width:624px;margin-bottom:16px;color:white;}
+.nav a {color:#666;padding:2px 8px;text-decoration:none;margin:2px;}
+.nav a:hover {background:#ddd;color:#aaa;border-bottom:1px solid #aaa;}
+.nav a.current {background:blue;color:white;border-bottom:1px solid #fff;}
+
+.items {width:640px;color:#666;}
+.items .item {border-left:1px solid #000;margin-bottom:16px;}
+.items .item > * {padding-left:16px;}
+.items .item .title {height:22px;background:#ccc;padding:4px 0 4px 16px;position:relative;}
+.items .item .title .ops {position:absolute;right:0;top:5px;}
+.items .item .title .ops > a {text-decoration:none;color:white;font-size:12px;padding:8px 12px;background:#888;}
+.items .item .title .ops > a:hover {background:#aaa;color:#eee;}
+.items .item .desc {background:#eee;padding:8px 16px;}
+
+.form {color:#666;}
+.form .control {border-left:1px solid #000;width:640px;margin-bottom:16px;position:relative;}
+.form .control .ops {position:absolute;right:0;top:5px;}
+.form .control .ops > a {text-decoration:none;color:white;font-size:12px;padding:8px 12px;background:#888;}
+.form .control > label {display:block;background:#9CE6BB;margin:0;padding:4px 16px;}
+.form .control > input, .form .control > textarea, .form .control > select, .form .control > .widgets {display:block;margin:0;width:608px;padding:8px 16px;border:0;background:#fafafa;font-size:14px;}
+.form .control > select {width:640px;}
+.form .control > input[type=submit] {width:640px;background:#9CE6BB;}
+.form .widget {margin-bottom:8px;}
+.form .widget checkbox, .form .widget radiobutton {display:inline-block;width:16px;width:16px;}
+.form .widget.text-input {position:relative;padding:0;}
+.form .widget.text-input textarea {border:0;margin:0;height:32px;width:540px;border:1px solid #888;}
+.form .widget.text-input a {display:block;position:absolute;height:28px;width:64px;background:#666;top:0;right:0;text-decoration:none;color:white;text-align:center;padding-top:10px;}
+
+.new {display:block;border-left:1px solid #000;padding:4px 16px 4px 16px;color:#666;background:#9CE6BB;width:607px;text-decoration:none;text-align:center;margin-bottom:16px;}
