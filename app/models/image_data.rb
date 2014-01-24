@@ -3,6 +3,7 @@ class ImageData
   include Mongoid::Timestamps
 
   field :file,     :type => String
+  field :origin_file_name, :type => String
 
   mount_uploader :file, ImageDataUploader
 
