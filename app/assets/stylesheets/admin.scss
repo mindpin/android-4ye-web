@@ -19,21 +19,20 @@ body{
   .item{
     float: left;
     a{
-      color: black;
+      color: white;
       width: 120px;
       padding: 5px 60px;
       display: block;
-      border-bottom:solid #B8B8B8;
-      background: #F0F0F0;
+      background: #5AC6D0;
       &:hover{
-        border-bottom:solid #ff0000;
-        background: #FFF0F0;
+        background: #46BECA;
+        color: white;
       }
     }
     &.current{
       a{
-        border-bottom:solid #ff0000;
-        background: #FFF0F0;
+        background: #46BECA;
+        color: white;
       }
     }
   }
