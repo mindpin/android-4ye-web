@@ -1,4 +1,4 @@
-class Admin::ImageDatasController < ApplicationController
+class Admin::ImageDatasController < Admin::ApplicationController
   def index
   end
 

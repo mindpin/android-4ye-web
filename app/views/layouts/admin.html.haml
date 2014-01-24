@@ -5,5 +5,7 @@
     = stylesheet_link_tag "application", :media => "all"
     = csrf_meta_tags
   %body
-    = yield
+    #page-body
+      = render "layouts/navbar"
+      = yield
     = javascript_include_tag "application"
