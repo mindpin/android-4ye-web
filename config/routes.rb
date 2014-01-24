@@ -9,6 +9,12 @@ end
 Android4yeWeb::Application.routes.draw do
   namespace :api do
 
+    resources :questions do
+      member do
+        post :do_answer
+      end
+    end
+
     resources :knowledge_nets do
       member do
         get :exp_info
