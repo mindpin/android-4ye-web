@@ -1,8 +1,4 @@
 Android4yeWeb::Application.routes.draw do
-  root :to => 'index#index'
-  get "/debug" => "index#debug"
-  get "/debug/knowledge_nets/:net_id" => "index#debug_net"
-  get "/debug/knowledge_nets/:net_id/knowledge_sets/:set_id" => "index#debug_set"
     # devise
   devise_for :users, :path => 'account',
                      :controllers => {
@@ -63,5 +59,14 @@ Android4yeWeb::Application.routes.draw do
     end
   end
 
-  resources :image_datas
+end
+
+Android4yeWeb::Application.routes.draw do
+  namespace :admin do
+    root :to => 'index#index'
+    resources :image_datas
+    get "/debug" => "index#debug"
+    get "/debug/knowledge_nets/:net_id" => "index#debug_net"
+    get "/debug/knowledge_nets/:net_id/knowledge_sets/:set_id" => "index#debug_set"
+  end
 end
