@@ -1,0 +1,17 @@
+.page-question-set
+  %h1.title #{@set.name} - 知识节点列表
+  .nav
+    = link_to "首页", admin_questions_path
+    >
+    = link_to @net.name, net_admin_questions_path(:id => @net.id)
+    >
+    = link_to @set.name, set_admin_questions_path(:id => @set.id, :net_id => @net.id), :class => "current"
+  .items.nodes
+    - @set.nodes.each do |node|
+      .item
+        .title
+          = node.name
+          .ops
+            - open = link_to "打开", node_admin_questions_path(:id => node.id, :net_id => @net.id)
+            - concept = link_to "相关概念管理", concepts_admin_questions_path(:id => node.id, :net_id => @net.id)
+            = open + concept

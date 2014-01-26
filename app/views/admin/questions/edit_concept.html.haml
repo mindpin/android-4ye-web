@@ -1,0 +1,14 @@
+.page-edit-concept
+  %h1.title 编辑概念 #{@concept.name}
+  .nav
+    = link_to "首页", admin_questions_path
+    >
+    = link_to @net.name, net_admin_questions_path(:id => @net.id)
+    >
+    = link_to @node.set.name, set_admin_questions_path(:id => @node.set.id, :net_id => @net.id)
+    >
+    = link_to "#{@node.name}-概念管理", concepts_admin_questions_path(:id => @node.id, :net_id => @net.id)
+    >
+    = link_to "#{@concept.name}-编辑", edit_concept_admin_questions_path(:id => @concept.id), :class => "current"
+  .edit-concept.form
+    = render "concept_form"

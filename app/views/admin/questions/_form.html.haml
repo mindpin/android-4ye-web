@@ -1,7 +1,7 @@
 .widget.choice.text-input.template{:style => "display:none;"}
   = text_area_tag "question[choices][]", nil, :rows => 2, :cols => 32
   = link_to "删除", "javascript:;", :style => "vertical-align:top;", :class => "remove-choice"
-= form_for @question do |f|
+= form_for [:admin, @question] do |f|
   = f.hidden_field :knowledge_net_id
 
   .control

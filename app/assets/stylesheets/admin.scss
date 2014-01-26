@@ -7,30 +7,44 @@ body{
   padding: 20px;
   background: white;
 }
-
+body{
+  margin-top:0;
+}
 .navbar{
   line-height: 1em;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
   a{
     text-decoration:none;
   }
   .item{
-    width: 120px;
-    padding: 0 60px;
-    display: inline-block;
+    float: left;
+    a{
+      color: white;
+      width: 120px;
+      padding: 5px 60px;
+      display: block;
+      background: #46BECA;
+      &:hover{
+        background: lighten(#46BECA, 10%);
+        color: white;
+      }
+    }
     &.current{
-      border-bottom:solid #ff0000;
-      background: #F0F0F0;
+      a{
+        background: lighten(#46BECA, 10%);
+        color: white;
+      }
     }
   }
   .logout{
-    display: inline-block;
+    display: block;
     float: right;
     font-size: 13px;
   }
   &:after {
     content:"";
     display:block;
+    clear: both;
   }
 }
 

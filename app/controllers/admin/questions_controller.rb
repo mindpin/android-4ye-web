@@ -1,4 +1,4 @@
-class QuestionsController < ApplicationController
+class Admin::QuestionsController < Admin::ApplicationController
   before_filter :is_admin
   def is_admin
     if !current_user.is_admin?
@@ -36,13 +36,13 @@ class QuestionsController < ApplicationController
     @concept = Concept.find(params[:id])
     @net = KnowledgeSpaceNetLib::KnowledgeNet.find(@concept.knowledge_net_id)
     @node = @net.find_node_by_id(@concept.knowledge_node_id)
-    @update_url = update_concept_questions_path(:id => @concept.id)
+    @update_url = update_concept_admin_questions_path(:id => @concept.id)
   end
   
   def update_concept
     concept = Concept.find(params[:id])
     concept.update_attributes(params[:concept])
-    return redirect_to concepts_questions_path(:id => concept.knowledge_node_id, :net_id => concept.knowledge_net_id)
+    return redirect_to concepts_admin_questions_path(:id => concept.knowledge_node_id, :net_id => concept.knowledge_net_id)
 
   end
   
@@ -79,7 +79,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(params[:question])
     @question.choices = nil if Question::TRUE_FALSE == params[:question][:kind]
     @question.save
-    redirect_to node_questions_path(
+    redirect_to node_admin_questions_path(
       :id     => @question.knowledge_node_id,
       :net_id => @question.knowledge_net_id
     )
@@ -97,6 +97,6 @@ class QuestionsController < ApplicationController
   def destroy
     @question = Question.find(params[:id])
     @question.destroy if @question
-    redirect_to :action => :index
+    redirect_to node_admin_questions_path(:id => @question.knowledge_node_id, :net_id => @question.knowledge_net_id)
   end
 end

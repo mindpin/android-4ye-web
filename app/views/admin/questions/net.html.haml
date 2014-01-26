@@ -1,0 +1,13 @@
+.page-question-net
+  %h1.title #{@net.name} - 知识单元列表
+  .nav
+    = link_to "首页", admin_questions_path
+    >
+    = link_to @net.name, net_admin_questions_path(:id => @net.id), :class => "current"
+  .items
+    - @net.sets.each do |set|
+      .knowledge-set.item
+        .title
+          = set.name
+          .ops
+            = link_to "打开", set_admin_questions_path(:id => set.id, :net_id => @net.id)

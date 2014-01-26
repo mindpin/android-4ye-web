@@ -1,9 +1,9 @@
 h1.title {font-size:24px;padding:0 16px;border-left:1px #000 solid;color:#444;}
 
-.nav {border-left:1px #000 solid;background:#A1C9F6;padding:4px 8px;width:624px;margin-bottom:16px;color:white;}
-.nav a {color:#666;padding:2px 8px;text-decoration:none;margin:2px;}
-.nav a:hover {background:#ddd;color:#aaa;border-bottom:1px solid #aaa;}
-.nav a.current {background:blue;color:white;border-bottom:1px solid #fff;}
+.nav {border-left:1px #000 solid;background:#46BECA;padding:4px 8px;width:624px;margin-bottom:16px;color:white;}
+.nav a {color:white;padding:2px 8px;text-decoration:none;margin:2px;}
+.nav a:hover {background:lighten(#46BECA, 10%);color:white;}
+.nav a.current {background:lighten(#46BECA, 10%);color:white;}
 
 .items {width:640px;color:#666;}
 .items .item {border-left:1px solid #000;margin-bottom:16px;}
