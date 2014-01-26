@@ -23,15 +23,15 @@ body{
       width: 120px;
       padding: 5px 60px;
       display: block;
-      background: #5AC6D0;
+      background: #46BECA;
       &:hover{
-        background: #46BECA;
+        background: lighten(#46BECA, 10%);
         color: white;
       }
     }
     &.current{
       a{
-        background: #46BECA;
+        background: lighten(#46BECA, 10%);
         color: white;
       }
     }
