@@ -24,6 +24,7 @@ public/static_files/*
 public/file_part_upload/*
 public/files/*
 public/test/*
+public/download/*
 coverage/
 .idea/*
 *DS_*

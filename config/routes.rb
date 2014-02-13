@@ -73,3 +73,7 @@ Android4yeWeb::Application.routes.draw do
     get "/debug/knowledge_nets/:net_id/knowledge_sets/:set_id" => "debug#debug_set"
   end
 end
+
+Android4yeWeb::Application.routes.draw do
+  mount UpdaterApp => "/update"
+end

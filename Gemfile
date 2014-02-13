@@ -20,6 +20,8 @@ group :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'timecop', '0.6.1' # 用于在测试中调整时间
+  # 4ye_updater 需要
+  gem "rack-test"
 end
 
 gem 'unicorn', '4.6.2'
@@ -36,6 +38,9 @@ gem 'carrierwave-aliyun'
 gem "mini_magick", "3.5.0", :require => false
 # mongoid
 gem "mongoid", "~> 3.0.0"
+
+gem "sinatra"
+
 gem 'knowledge-space-net-lib',
     :git => 'git://github.com/mindpin/knowledge-space-net-lib.git',
     :tag => '0.4.0'

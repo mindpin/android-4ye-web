@@ -64,5 +64,6 @@ module Android4yeWeb
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    require File.expand_path('../../vendor/apps/4ye_updater/lib/app.rb', __FILE__)
   end
 end
