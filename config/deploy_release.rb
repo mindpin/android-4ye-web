@@ -16,8 +16,8 @@ set :shared_paths, [
   "config/mongoid.yml",
   'config/initializers/r.rb',
   '.ruby-version', 
-  'deploy/sh/property.yaml'
-  'vendor/apps/4ye_updater/external/version_manager/android.yaml'
+  'deploy/sh/property.yaml',
+  'vendor/apps/4ye_updater/external/version_manager/android.yaml',
   'vendor/apps/4ye_updater/external/version_manager/ios.yaml'
 ]
 
