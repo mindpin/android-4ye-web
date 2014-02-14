@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class ImageDataUploader < CarrierWave::Uploader::Base
   storage :aliyun
 
@@ -5,8 +6,12 @@ class ImageDataUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
+  def dir_prefix
+    `ruby #{Rails.root.to_s}/deploy/sh/parse_property.rb ALIYUN_BASE_DIR`
+  end
+
   def store_dir
-    "/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "/#{dir_prefix}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
   # 给上传的文件重新命名
