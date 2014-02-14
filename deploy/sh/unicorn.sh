@@ -6,7 +6,8 @@ project_path=$current_path/../..
 
 MINDPIN_MRS_DATA_PATH=`ruby $current_path/parse_property.rb MINDPIN_MRS_DATA_PATH`
 rails_env=`ruby $current_path/parse_property.rb RAILS_ENV`
-pid=$MINDPIN_MRS_DATA_PATH/pids/unicorn-4ye.pid
+publish_name=`ruby $current_path/parse_property.rb PUBLISH_NAME`
+pid=$MINDPIN_MRS_DATA_PATH/pids/unicorn-$publish_name.pid
 
 cd $project_path
 echo "######### info #############"
@@ -19,14 +20,14 @@ case "$1" in
   start)
     assert_process_from_pid_file_not_exist $pid
     bundle exec unicorn_rails -c config/unicorn.rb -E $rails_env -D
-    echo "4ye start .............$(command_status)"
+    echo "$publish_name start .............$(command_status)"
   ;;
   status)
-    check_run_status_from_pid_file $pid 'unicorn_4ye'
+    check_run_status_from_pid_file $pid "unicorn_$publish_name"
   ;;
   stop)
     kill `cat $pid`
-    echo "4ye stop .............$(command_status)"
+    echo "$publish_name stop .............$(command_status)"
   ;;
   usr2_stop)
     echo "usr2_stop"
