@@ -1,0 +1,3 @@
+[submodule "vendor/apps/4ye_updater"]
+	path = vendor/apps/4ye_updater
+	url = git@gitcafe.com:kaid/4ye_updater.git
