@@ -36,3 +36,4 @@ config/mongoid.yml
 
 .ruby-version
 deploy/sh/property.yaml
+vender/apps/4ye_updater/external/version_manager/android.yaml
