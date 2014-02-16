@@ -1,6 +1,7 @@
 require "bundler"
 require "sinatra/base"
 require File.expand_path('../version_updater.rb', __FILE__)
+require File.expand_path('../feedback_saver.rb', __FILE__)
 
 class UpdaterApp < Sinatra::Base
   configure :production, :development do
@@ -23,10 +24,22 @@ class UpdaterApp < Sinatra::Base
     VersionUpdater.new(params).response
   end
 
+  post "/api/submit_exception" do
+    return 406 if params[:feedback]
+    MobileFeedBackSaver.new(params).response
+  end
+
+  post "/api/submit_feedback" do
+    return 406 if params[:exception_type] || params[:exception_stack]
+    MobileFeedBackSaver.new(params).response
+  end
+
   protected
 
   def get_version(params)
-    params[:version] == "newest" ? VersionManager.get_newest_version("android") : params[:version]
-    
+    if params[:version] == "newest"
+    then VersionManager.get_newest_version("android")
+    else params[:version]
+    end
   end
 end

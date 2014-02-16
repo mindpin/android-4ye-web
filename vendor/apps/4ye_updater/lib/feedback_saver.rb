@@ -1,0 +1,30 @@
+require File.expand_path('../mobile_feedback.rb', __FILE__)
+
+class MobileFeedBackSaver
+  attr_reader :params
+
+  def initialize(params)
+    @params = parse(params)
+  end
+
+  def response
+    persist! ? "" : 406
+  end
+
+  private
+
+  def parse(params)
+    hash = params.dup
+    hash[:datetime] = Time.at(hash[:datetime].to_i)
+    hash[:other_device_info] = hash[:other_device_info] && JSON.parse(hash[:other_device_info])
+    hash[:kind] = nil
+    hash
+  end
+
+  def persist!
+    model = MobileFeedBack.from_params(params)
+    model.set_feedback! if model.is_feedback?
+    model.set_exception! if model.is_exception?
+    model.save
+  end
+end
