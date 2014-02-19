@@ -33,7 +33,7 @@ gem 'haml', '4.0.3' # HAML模板语言
 gem "carrierwave", "0.8.0"
 gem 'carrierwave-mongoid'
 gem 'rest-client'
-gem 'carrierwave-aliyun'
+gem 'carrierwave-aliyun', :git => 'git://github.com/huacnlee/carrierwave-aliyun.git', :ref => 'e7537c9ae0d9cda211c0a718c94a84c77c7d66af'
 # carrierwave 用到的图片切割
 gem "mini_magick", "3.5.0", :require => false
 # mongoid

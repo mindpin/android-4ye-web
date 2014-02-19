@@ -5,6 +5,12 @@ require "carrierwave-aliyun"
 class ApkUploader < CarrierWave::Uploader::Base
   storage :aliyun
 
+  process :force_content_type
+
+  def force_content_type
+    file.content_type = "application/octet-stream"
+  end
+
   def filename=(str)
     @_filename = str
   end
