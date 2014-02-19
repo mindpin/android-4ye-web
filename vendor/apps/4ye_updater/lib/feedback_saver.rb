@@ -23,8 +23,7 @@ class MobileFeedBackSaver
 
   def persist!
     model = MobileFeedBack.from_params(params)
-    model.set_feedback! if model.is_feedback?
-    model.set_exception! if model.is_exception?
+    model.set_kind!
     model.save
   end
 end

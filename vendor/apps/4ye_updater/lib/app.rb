@@ -1,6 +1,7 @@
 require "bundler"
 require "sinatra/base"
 require File.expand_path('../version_updater.rb', __FILE__)
+require File.expand_path('../version_getter.rb', __FILE__)
 require File.expand_path('../feedback_saver.rb', __FILE__)
 
 class UpdaterApp < Sinatra::Base

@@ -22,7 +22,7 @@ class MobileFeedBack
             :presence => true
 
   def self.from_params(params)
-    instance = self.new(params)
+    self.new(params)
   end
 
   def is_exception?
@@ -33,13 +33,9 @@ class MobileFeedBack
     self.feedback
   end
 
-  def set_exception!
-    return if is_feedback?
-    self.kind = EXCEPTION
-  end
-
-  def set_feedback!
-    return if is_exception?
-    self.kind = FEEDBACK
+  def set_kind!
+    return self.kind = EXCEPTION if is_feedback?
+    return self.kind = FEEDBACK if is_exception?
+    self.kind = nil
   end
 end
