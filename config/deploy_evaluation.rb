@@ -5,7 +5,7 @@ require 'mina/git'
 set :domain, '4ye-evaluation.mindpin.com'
 set :deploy_to, '/web/2013/4ye_evaluation'
 set :current_path, 'current'
-set :repository, 'git://gitcafe.com/ben7th/android-4ye-web.git'
+set :repository, 'git://github.com/mindpin/android-4ye-web.git'
 set :branch, 'evaluation'
 set :user, 'root'
 
