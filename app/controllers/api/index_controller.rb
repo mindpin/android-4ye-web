@@ -13,13 +13,25 @@ class Api::IndexController < ApplicationController
     render :json => _user_info
   end
 
+  def user_info
+    us = UserSecret.where(:secret => params[:secret]).first
+    return render :json => {:error => "user not found"} if us.blank?
+    user = User.find(us.user_id)
+    render :json => __user_info(user)
+  end
+
   def _user_info
+    __user_info(current_user)
+  end
+
+  def __user_info(user)
     return {
-      :id     => current_user.id,
-      :name   => current_user.name,
-      :login  => current_user.login,
-      :email  => current_user.email,
-      :avatar => "#{request.protocol}#{request.host_with_port}#{current_user.normal_avatar_url}"
+      :id     => user.id,
+      :name   => user.name,
+      :login  => user.login,
+      :email  => user.email,
+      :secret => user.secret,
+      :avatar => "#{request.protocol}#{request.host_with_port}#{user.normal_avatar_url}"
     }
   end
 end
