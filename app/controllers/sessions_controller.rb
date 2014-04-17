@@ -38,6 +38,7 @@ class SessionsController < Devise::SessionsController
       :name   => current_user.name,
       :login  => current_user.login,
       :email  => current_user.email,
+      :secret => current_user.secret,
       :avatar => "#{request.protocol}#{request.host_with_port}#{current_user.normal_avatar_url}"
     }
   end
