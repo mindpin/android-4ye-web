@@ -8,6 +8,7 @@ end
 
 Android4yeWeb::Application.routes.draw do
   namespace :api do
+    get "/user_info" => 'index#user_info'
 
     resources :questions do
       member do
