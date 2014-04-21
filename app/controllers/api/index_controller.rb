@@ -14,6 +14,7 @@ class Api::IndexController < ApplicationController
   end
 
   def user_info
+    response.headers["Access-Control-Allow-Origin"] = "*"
     us = UserSecret.where(:secret => params[:secret]).first
     return render :json => {:error => "user not found"} if us.blank?
     user = User.find(us.user_id)
