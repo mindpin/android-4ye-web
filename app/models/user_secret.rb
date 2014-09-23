@@ -1,6 +1,7 @@
 require "securerandom"
 
 class UserSecret < ActiveRecord::Base
+  attr_accessible :user_id, :secret
 
   validates :user_id,   :presence => true
   validates :secret,   :presence => true
