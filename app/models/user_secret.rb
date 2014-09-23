@@ -1,11 +1,6 @@
 require "securerandom"
 
-class UserSecret
-  include Mongoid::Document
-  include Mongoid::Timestamps
-
-  field :user_id, :type => String
-  field :secret,  :type => String
+class UserSecret < ActiveRecord::Base
 
   validates :user_id,   :presence => true
   validates :secret,   :presence => true
@@ -30,7 +25,7 @@ class UserSecret
       user_secret = self.user_secret
       if user_secret.blank?
         user_secret = UserSecret.create(
-          :user_id => self.id.to_s, 
+          :user_id => self.id.to_s,
           :secret => SecureRandom.hex(16)
         )
       end
